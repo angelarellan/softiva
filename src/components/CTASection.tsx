@@ -6,7 +6,6 @@ export default function CTASection() {
     <section className="relative py-24">
       <div className="mx-auto max-w-4xl px-6">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface px-8 py-14 text-center">
-          <div className="pointer-events-none absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
           <div className="pointer-events-none absolute -top-20 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-accent-violet/20 blur-[100px]" />
 
           <div className="relative">

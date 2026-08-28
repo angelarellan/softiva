@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import CTASection from "@/components/CTASection";
 import { projects } from "@/data/projects";
@@ -31,11 +32,15 @@ export default function PortafolioPage() {
                 key={project.slug}
                 className="group overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-shadow hover:shadow-md"
               >
-                <div
-                  className={`relative aspect-[4/3] overflow-hidden bg-gradient-to-br ${project.gradient}`}
-                >
-                  <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/20" />
-                  <div className="absolute inset-0 bg-grid opacity-20" />
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/40" />
                   <div className="absolute inset-0 flex flex-col justify-end p-6">
                     <h3 className="text-xl font-semibold text-white">
                       {project.title}

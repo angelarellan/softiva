@@ -10,7 +10,6 @@ export default function PageHeader({ eyebrow, title, description }: PageHeaderPr
   return (
     <section className="relative overflow-hidden pt-36 pb-16">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
         <div className="animate-float-slow absolute -top-32 left-1/4 h-80 w-80 rounded-full bg-accent-blue/25 blur-[110px]" />
         <div className="animate-float-slower absolute top-10 right-1/4 h-80 w-80 rounded-full bg-accent-violet/25 blur-[110px]" />
       </div>

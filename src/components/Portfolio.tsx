@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projects";
 
@@ -24,11 +25,14 @@ export default function Portfolio() {
               href="/portafolio"
               className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-sm"
             >
-              <div
-                className={`absolute inset-0 bg-gradient-to-br ${project.gradient} transition-transform duration-500 group-hover:scale-110`}
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/25" />
-              <div className="absolute inset-0 bg-grid opacity-20" />
+              <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/45" />
 
               <div className="relative flex h-full flex-col justify-end p-6">
                 <div className="translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">

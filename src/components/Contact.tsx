@@ -5,7 +5,7 @@ import { CheckCircle2, Loader2, Mail, MapPin, Send } from "lucide-react";
 
 const SERVICES = [
   "Desarrollo Web & Landing Pages",
-  "Diseño UI/UX & Figma",
+  "Diseño UI/UX",
   "Mantenimiento Web",
   "Otro",
 ];
@@ -71,7 +71,7 @@ export default function Contact() {
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">
                 <MapPin size={18} className="text-accent-violet" />
               </span>
-              Trabajamos 100% remoto, para todo el mundo.
+              Atención personalizada para proyectos globales.
             </div>
           </div>
         </div>

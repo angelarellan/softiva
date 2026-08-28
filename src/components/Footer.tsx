@@ -30,17 +30,17 @@ export default function Footer() {
   return (
     <footer className="border-t border-background/10 bg-foreground text-background">
       <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-4 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div className="col-span-2 sm:col-span-4 lg:col-span-1">
+        <div className="grid grid-cols-1 gap-y-12 text-center lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-8 lg:text-left">
+          <div>
             <Link href="/" className="text-xl font-bold tracking-tight text-background">
               Soft<span className="gradient-text">iva</span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm text-background/65">
+            <p className="mx-auto mt-4 max-w-xs text-sm text-background/65 lg:mx-0">
               Desarrollo web y diseño digital de alto nivel para marcas que
               quieren destacar.
             </p>
 
-            <div className="mt-6 flex items-center gap-3">
+            <div className="mt-6 flex items-center justify-center gap-3 lg:justify-start">
               {SOCIALS.map(({ label, href, Icon }) => (
                 <a
                   key={label}
@@ -100,9 +100,9 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
-                  className="flex items-start gap-2 text-sm text-background/75 transition-colors hover:text-background"
+                  className="flex items-center justify-center gap-2 text-sm text-background/75 transition-colors hover:text-background lg:justify-start"
                 >
-                  <Mail size={16} className="mt-0.5 shrink-0 text-accent-violet" />
+                  <Mail size={16} className="shrink-0 text-accent-violet" />
                   {CONTACT_EMAIL}
                 </a>
               </li>
@@ -111,15 +111,15 @@ export default function Footer() {
                   href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2 text-sm text-background/75 transition-colors hover:text-background"
+                  className="flex items-center justify-center gap-2 text-sm text-background/75 transition-colors hover:text-background lg:justify-start"
                 >
-                  <MessageCircle size={16} className="mt-0.5 shrink-0 text-accent-mint" />
+                  <MessageCircle size={16} className="shrink-0 text-accent-mint" />
                   WhatsApp
                 </a>
               </li>
-              <li className="flex items-start gap-2 text-sm text-background/75">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-accent-blue" />
-                Trabajamos 100% remoto, para todo el mundo.
+              <li className="flex flex-col items-center gap-1.5 text-center text-sm text-background/75 lg:flex-row lg:items-start lg:gap-2 lg:text-left">
+                <MapPin size={16} className="shrink-0 text-accent-blue" />
+                <span>Atención personalizada para proyectos globales.</span>
               </li>
             </ul>
           </div>

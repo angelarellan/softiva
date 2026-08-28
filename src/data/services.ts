@@ -29,7 +29,7 @@ export const services: Service[] = [
   {
     slug: "diseno-uiux",
     icon: PenTool,
-    title: "Diseño UI/UX & Figma",
+    title: "Diseño UI/UX",
     summary:
       "Interfaces modernas, identidad de marca y prototipos que convierten visitantes en clientes.",
     description:

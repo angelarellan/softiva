@@ -6,7 +6,6 @@ export default function Hero() {
     <section className="relative flex min-h-screen items-center overflow-hidden pt-16">
       {/* Aurora background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
         <div className="animate-float-slow absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-accent-blue/25 blur-[120px]" />
         <div className="animate-float-slower absolute top-1/3 right-1/4 h-96 w-96 rounded-full bg-accent-violet/25 blur-[120px]" />
         <div className="animate-float-slow absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent-mint/20 blur-[110px]" />
