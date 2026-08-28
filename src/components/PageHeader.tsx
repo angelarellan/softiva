@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Reveal from "@/components/Reveal";
 
 type PageHeaderProps = {
   eyebrow: string;
@@ -14,7 +15,7 @@ export default function PageHeader({ eyebrow, title, description }: PageHeaderPr
         <div className="animate-float-slower absolute top-10 right-1/4 h-80 w-80 rounded-full bg-accent-violet/25 blur-[110px]" />
       </div>
 
-      <div className="relative mx-auto max-w-3xl px-6 text-center">
+      <Reveal className="relative mx-auto max-w-3xl px-6 text-center">
         <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
           {eyebrow}
         </span>
@@ -26,7 +27,7 @@ export default function PageHeader({ eyebrow, title, description }: PageHeaderPr
             {description}
           </p>
         )}
-      </div>
+      </Reveal>
     </section>
   );
 }

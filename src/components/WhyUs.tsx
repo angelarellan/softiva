@@ -1,4 +1,5 @@
 import { Zap, Gem, Code } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const BENEFITS = [
   {
@@ -30,30 +31,31 @@ export default function WhyUs() {
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-surface to-transparent" />
 
       <div className="relative mx-auto max-w-6xl px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent-blue">
-            Por qué elegir Softiva
-          </span>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Resultados que se{" "}
-            <span className="gradient-text">notan desde el primer día</span>
-          </h2>
-        </div>
+        <Reveal>
+          <div className="mx-auto max-w-2xl text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-accent-blue">
+              Por qué elegir Softiva
+            </span>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Resultados que se{" "}
+              <span className="gradient-text">notan desde el primer día</span>
+            </h2>
+          </div>
+        </Reveal>
 
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
-          {BENEFITS.map(({ icon: Icon, title, description, accent }) => (
-            <div
-              key={title}
-              className="rounded-2xl border border-border bg-surface p-8 text-center shadow-sm transition-colors duration-300 hover:border-accent-blue/40"
-            >
-              <div
-                className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-surface-2 ${accent}`}
-              >
-                <Icon size={24} />
+          {BENEFITS.map(({ icon: Icon, title, description, accent }, index) => (
+            <Reveal key={title} delay={index * 0.1}>
+              <div className="rounded-2xl border border-border bg-surface p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-blue/40 hover:shadow-lg">
+                <div
+                  className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-surface-2 ${accent}`}
+                >
+                  <Icon size={24} />
+                </div>
+                <h3 className="text-lg font-semibold">{title}</h3>
+                <p className="mt-2 text-sm text-muted">{description}</p>
               </div>
-              <h3 className="text-lg font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-muted">{description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

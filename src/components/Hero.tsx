@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 export default function Hero() {
   return (
@@ -12,49 +13,48 @@ export default function Hero() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 text-center">
-        <div className="animate-fade-up mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-4 py-1.5 text-sm text-muted shadow-sm backdrop-blur">
-          <Sparkles size={14} className="text-accent-violet" />
-          Agencia de desarrollo web &amp; diseño digital
-        </div>
+        <Reveal>
+          <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-4 py-1.5 text-sm text-muted shadow-sm backdrop-blur">
+            <Sparkles size={14} className="text-accent-violet" />
+            Agencia de desarrollo web &amp; diseño digital
+          </div>
+        </Reveal>
 
-        <h1
-          className="animate-fade-up text-4xl font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl"
-          style={{ animationDelay: "0.1s" }}
-        >
-          Transformamos ideas en{" "}
-          <span className="gradient-text">experiencias digitales</span>
-        </h1>
+        <Reveal delay={0.1}>
+          <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+            Transformamos ideas en{" "}
+            <span className="gradient-text">experiencias digitales</span>
+          </h1>
+        </Reveal>
 
-        <p
-          className="animate-fade-up mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl"
-          style={{ animationDelay: "0.2s" }}
-        >
-          En Softiva creamos páginas web y diseños de alto nivel: rápidos,
-          modernos y pensados para convertir. Llevamos tu marca al siguiente
-          nivel con tecnología y diseño de punta.
-        </p>
+        <Reveal delay={0.2}>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">
+            En Softiva creamos páginas web y diseños de alto nivel: rápidos,
+            modernos y pensados para convertir. Llevamos tu marca al siguiente
+            nivel con tecnología y diseño de punta.
+          </p>
+        </Reveal>
 
-        <div
-          className="animate-fade-up mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          style={{ animationDelay: "0.3s" }}
-        >
-          <Link
-            href="/contacto"
-            className="btn-glow group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white transition-transform hover:scale-105"
-          >
-            Iniciar Proyecto
-            <ArrowRight
-              size={18}
-              className="transition-transform group-hover:translate-x-1"
-            />
-          </Link>
-          <Link
-            href="/portafolio"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-colors hover:border-accent-violet/60 hover:bg-surface-2"
-          >
-            Ver Portafolio
-          </Link>
-        </div>
+        <Reveal delay={0.3}>
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="/contacto"
+              className="btn-glow group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
+            >
+              Iniciar Proyecto
+              <ArrowRight
+                size={18}
+                className="transition-transform group-hover:translate-x-1"
+              />
+            </Link>
+            <Link
+              href="/portafolio"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-accent-violet/60 hover:bg-surface-2"
+            >
+              Ver Portafolio
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

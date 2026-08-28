@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { CheckCircle2, Loader2, Mail, MapPin, Send } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const SERVICES = [
   "Desarrollo Web & Landing Pages",
@@ -51,7 +52,7 @@ export default function Contact() {
       </div>
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2">
-        <div>
+        <Reveal>
           <h2 className="text-2xl font-bold tracking-tight">
             Nuestros datos de contacto
           </h2>
@@ -74,8 +75,9 @@ export default function Contact() {
               Atención personalizada para proyectos globales.
             </div>
           </div>
-        </div>
+        </Reveal>
 
+        <Reveal delay={0.1}>
         <form
           onSubmit={handleSubmit}
           className="rounded-2xl border border-border bg-surface p-8 shadow-sm"
@@ -143,7 +145,7 @@ export default function Contact() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="btn-glow inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.02] disabled:opacity-70"
+              className="btn-glow inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg disabled:opacity-70 disabled:hover:translate-y-0 disabled:hover:scale-100"
             >
               {status === "loading" ? (
                 <>
@@ -171,6 +173,7 @@ export default function Contact() {
             )}
           </div>
         </form>
+        </Reveal>
       </div>
     </section>
   );

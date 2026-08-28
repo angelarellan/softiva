@@ -4,16 +4,29 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
 
+const TITLE = "Softiva | Agencia de Desarrollo Web, UI/UX y Soluciones Digitales";
+const DESCRIPTION =
+  "Creamos sitios web de alto rendimiento, landing pages y diseños UI/UX para marcas que quieren destacar.";
+
 export const metadata: Metadata = {
-  title: "Softiva — Desarrollo Web & Diseño UI/UX",
-  description:
-    "Softiva transforma ideas en experiencias digitales: desarrollo web, landing pages, diseño UI/UX y mantenimiento web de alto nivel.",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: "website",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    locale: "es_AR",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

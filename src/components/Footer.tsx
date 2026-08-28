@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { GithubIcon, InstagramIcon, LinkedinIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import FooterMarquee from "@/components/FooterMarquee";
 
 const SOCIALS = [
   { label: "Instagram", href: "https://instagram.com/softiva", Icon: InstagramIcon },
@@ -28,8 +29,10 @@ const WHATSAPP_MESSAGE = "Hola Softiva, quiero iniciar un proyecto 🚀";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-background/10 bg-foreground text-background">
-      <div className="mx-auto max-w-6xl px-6 py-16">
+    <footer className="relative overflow-hidden border-t border-background/10 bg-foreground text-background">
+      <FooterMarquee />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-1 gap-y-12 text-center lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-8 lg:text-left">
           <div>
             <Link href="/" className="text-xl font-bold tracking-tight text-background">
@@ -48,7 +51,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-background/15 text-background/70 transition-colors hover:border-accent-violet/60 hover:text-background"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-background/15 text-background/70 transition-all duration-200 hover:scale-[1.08] hover:border-accent-violet/60 hover:text-background"
                 >
                   <Icon size={16} />
                 </a>

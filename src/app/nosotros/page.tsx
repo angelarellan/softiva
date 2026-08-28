@@ -2,11 +2,22 @@ import type { Metadata } from "next";
 import { Compass, HeartHandshake, LineChart, Sparkle } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CTASection from "@/components/CTASection";
+import Reveal from "@/components/Reveal";
+import { SITE_NAME } from "@/lib/site";
+
+const TITLE = "Nosotros | Softiva";
+const DESCRIPTION =
+  "Conocé la filosofía de Softiva: una agencia enfocada en diseño de alto nivel, código limpio y resultados medibles.";
 
 export const metadata: Metadata = {
-  title: "Nosotros — Softiva",
-  description:
-    "Conocé la filosofía de Softiva: una agencia enfocada en diseño de alto nivel, código limpio y resultados medibles.",
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    type: "website",
+    siteName: SITE_NAME,
+  },
 };
 
 const VALUES = [
@@ -82,7 +93,7 @@ export default function NosotrosPage() {
       />
 
       <section className="pb-24">
-        <div className="mx-auto max-w-4xl px-6 text-center">
+        <Reveal className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             Nuestra filosofía
           </h2>
@@ -94,22 +105,21 @@ export default function NosotrosPage() {
             decisión visual sumen a un mismo objetivo: hacer crecer tu
             marca.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mx-auto mt-14 grid max-w-5xl gap-6 px-6 sm:grid-cols-2">
-          {VALUES.map(({ icon: Icon, title, description, accent }) => (
-            <div
-              key={title}
-              className="rounded-2xl border border-border bg-surface p-8 shadow-sm"
-            >
-              <div
-                className={`mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface-2 ${accent}`}
-              >
-                <Icon size={22} />
+          {VALUES.map(({ icon: Icon, title, description, accent }, index) => (
+            <Reveal key={title} delay={(index % 2) * 0.1}>
+              <div className="rounded-2xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg">
+                <div
+                  className={`mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-border bg-surface-2 ${accent}`}
+                >
+                  <Icon size={22} />
+                </div>
+                <h3 className="text-lg font-semibold">{title}</h3>
+                <p className="mt-2 text-sm text-muted">{description}</p>
               </div>
-              <h3 className="text-lg font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-muted">{description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -118,27 +128,26 @@ export default function NosotrosPage() {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-surface to-transparent" />
 
         <div className="relative mx-auto max-w-5xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
               Cómo trabajamos
             </span>
             <h2 className="mt-3 text-3xl font-bold tracking-tight">
               Un proceso claro, de principio a fin
             </h2>
-          </div>
+          </Reveal>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {PROCESS.map(({ step, title, description }) => (
-              <div
-                key={step}
-                className="rounded-2xl border border-border bg-surface p-6 shadow-sm"
-              >
-                <span className="gradient-text text-3xl font-extrabold">
-                  {step}
-                </span>
-                <h3 className="mt-3 text-lg font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-muted">{description}</p>
-              </div>
+            {PROCESS.map(({ step, title, description }, index) => (
+              <Reveal key={step} delay={(index % 4) * 0.1}>
+                <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-lg">
+                  <span className="gradient-text text-3xl font-extrabold">
+                    {step}
+                  </span>
+                  <h3 className="mt-3 text-lg font-semibold">{title}</h3>
+                  <p className="mt-2 text-sm text-muted">{description}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
