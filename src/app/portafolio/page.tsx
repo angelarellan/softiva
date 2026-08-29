@@ -39,8 +39,8 @@ export default function PortafolioPage() {
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
-              <Reveal key={project.slug} delay={(index % 3) * 0.1}>
-                <div className="group overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+              <Reveal key={project.slug} delay={(index % 3) * 0.1} className="h-full">
+                <div className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <Image
                       src={project.image}
@@ -58,9 +58,9 @@ export default function PortafolioPage() {
                     </div>
                   </div>
 
-                  <div className="p-6">
+                  <div className="flex flex-1 flex-col p-6">
                     <p className="text-sm text-muted">{project.description}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
+                    <div className="mt-auto flex flex-wrap gap-2 pt-4">
                       {project.tags.map((tag) => (
                         <span
                           key={tag}

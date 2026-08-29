@@ -45,8 +45,8 @@ export default function WhyUs() {
 
         <div className="mt-16 grid gap-6 sm:grid-cols-3">
           {BENEFITS.map(({ icon: Icon, title, description, accent }, index) => (
-            <Reveal key={title} delay={index * 0.1}>
-              <div className="rounded-2xl border border-border bg-surface p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-blue/40 hover:shadow-lg">
+            <Reveal key={title} delay={index * 0.1} className="h-full">
+              <div className="flex h-full flex-col items-center rounded-2xl border border-border bg-surface p-8 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-accent-blue/40 hover:shadow-lg">
                 <div
                   className={`mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-surface-2 ${accent}`}
                 >

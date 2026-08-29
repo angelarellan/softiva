@@ -21,8 +21,8 @@ export default function Services() {
 
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {services.map(({ slug, icon: Icon, title, summary }, index) => (
-            <Reveal key={slug} delay={index * 0.1}>
-              <div className="group relative overflow-hidden rounded-2xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
+            <Reveal key={slug} delay={index * 0.1} className="h-full">
+              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-accent-blue/20 to-accent-violet/20 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className="relative mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-accent-blue to-accent-violet text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
@@ -34,7 +34,7 @@ export default function Services() {
 
                 <Link
                   href="/servicios"
-                  className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent-blue transition-colors hover:text-accent-violet"
+                  className="relative mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-accent-blue transition-colors hover:text-accent-violet"
                 >
                   Ver más
                   <ArrowRight
