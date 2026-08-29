@@ -25,7 +25,6 @@ export default function PortafolioPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Portafolio"
         title={
           <>
             Proyectos que{" "}

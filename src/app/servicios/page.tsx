@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CTASection from "@/components/CTASection";
+import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
 import { services } from "@/data/services";
 import { SITE_NAME } from "@/lib/site";
@@ -25,7 +26,6 @@ export default function ServiciosPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Servicios"
         title={
           <>
             Todo lo que tu marca necesita para{" "}
@@ -45,7 +45,7 @@ export default function ServiciosPage() {
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
+                  <h2 className="text-2xl font-bold leading-tight tracking-tight">{title}</h2>
                   <p className="mt-3 text-muted">{description}</p>
 
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -68,6 +68,8 @@ export default function ServiciosPage() {
           ))}
         </div>
       </section>
+
+      <FAQ />
 
       <CTASection />
     </>

@@ -22,7 +22,6 @@ export default function ContactoPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Contacto"
         title={
           <>
             Hablemos de tu{" "}

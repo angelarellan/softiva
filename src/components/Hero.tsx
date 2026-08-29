@@ -14,7 +14,7 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 text-center">
         <Reveal>
-          <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
+          <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
             Transformamos ideas en{" "}
             <span className="gradient-text">experiencias digitales</span>
           </h1>
