@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 export default function Hero() {
@@ -14,20 +14,13 @@ export default function Hero() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 text-center">
         <Reveal>
-          <div className="mx-auto mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-4 py-1.5 text-sm text-muted shadow-sm backdrop-blur">
-            <Sparkles size={14} className="text-accent-violet" />
-            Agencia de desarrollo web &amp; diseño digital
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1}>
           <h1 className="text-4xl font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
             Transformamos ideas en{" "}
             <span className="gradient-text">experiencias digitales</span>
           </h1>
         </Reveal>
 
-        <Reveal delay={0.2}>
+        <Reveal delay={0.1}>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">
             En Softiva creamos páginas web y diseños de alto nivel: rápidos,
             modernos y pensados para convertir. Llevamos tu marca al siguiente
@@ -35,7 +28,7 @@ export default function Hero() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.3}>
+        <Reveal delay={0.2}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
               href="/contacto"
