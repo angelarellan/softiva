@@ -11,7 +11,7 @@ export default function CTASection() {
             <div className="pointer-events-none absolute -top-20 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-accent-violet/20 blur-[100px]" />
 
             <div className="relative">
-              <h2 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+              <h2 className="text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
                 ¿Listo para llevar tu marca al{" "}
                 <span className="gradient-text">siguiente nivel</span>?
               </h2>

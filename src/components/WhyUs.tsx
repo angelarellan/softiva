@@ -36,7 +36,7 @@ export default function WhyUs() {
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-blue">
               Por qué elegir Softiva
             </span>
-            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
               Resultados que se{" "}
               <span className="gradient-text">notan desde el primer día</span>
             </h2>

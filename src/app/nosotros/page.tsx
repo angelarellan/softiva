@@ -93,7 +93,7 @@ export default function NosotrosPage() {
 
       <section className="pb-24">
         <Reveal className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
+          <h2 className="text-2xl font-bold leading-tight tracking-tight text-balance sm:text-3xl">
             Nuestra filosofía
           </h2>
           <p className="mt-4 text-muted">
@@ -131,7 +131,7 @@ export default function NosotrosPage() {
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
               Cómo trabajamos
             </span>
-            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight">
+            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance">
               Un proceso claro, de principio a fin
             </h2>
           </Reveal>

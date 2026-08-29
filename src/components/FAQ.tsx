@@ -30,10 +30,10 @@ export default function FAQ() {
     <section className="pb-28">
       <div className="mx-auto max-w-3xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
+          <span className="text-lg font-semibold uppercase tracking-widest text-accent-violet">
             Preguntas frecuentes
           </span>
-          <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
             Resolvemos tus{" "}
             <span className="gradient-text">principales dudas</span>
           </h2>

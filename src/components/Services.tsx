@@ -12,7 +12,7 @@ export default function Services() {
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
               Servicios
             </span>
-            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
               Todo lo que tu marca necesita para{" "}
               <span className="gradient-text">destacar online</span>
             </h2>

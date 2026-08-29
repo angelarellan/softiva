@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import TechMarquee from "@/components/TechMarquee";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import Portfolio from "@/components/Portfolio";
@@ -9,7 +8,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <TechMarquee />
       <Services />
       <WhyUs />
       <Portfolio />

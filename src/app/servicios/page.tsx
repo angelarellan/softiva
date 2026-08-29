@@ -45,7 +45,7 @@ export default function ServiciosPage() {
                 </div>
 
                 <div>
-                  <h2 className="text-2xl font-bold leading-tight tracking-tight">{title}</h2>
+                  <h2 className="text-2xl font-bold leading-tight tracking-tight text-balance">{title}</h2>
                   <p className="mt-3 text-muted">{description}</p>
 
                   <ul className="mt-6 grid gap-3 sm:grid-cols-2">

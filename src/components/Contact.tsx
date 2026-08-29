@@ -53,7 +53,7 @@ export default function Contact() {
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2">
         <Reveal>
-          <h2 className="text-2xl font-bold leading-tight tracking-tight">
+          <h2 className="text-2xl font-bold leading-tight tracking-tight text-balance">
             Nuestros datos de contacto
           </h2>
           <p className="mt-4 max-w-md text-muted">

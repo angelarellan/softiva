@@ -15,7 +15,7 @@ export default function Portfolio() {
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
               Portafolio
             </span>
-            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
+            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
               Proyectos que <span className="gradient-text">hablan por sí solos</span>
             </h2>
           </div>
