@@ -96,7 +96,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-background/50">
-              Contacto rápido
+              Contacto
             </h3>
             <ul className="mt-4 space-y-3">
               <li>
