@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     url: SITE_URL,
     locale: "es_AR",
   },
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
