@@ -1,6 +1,6 @@
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
+const WHATSAPP_MESSAGE = "Hola Softiva Studio, quisiera hacer una consulta.";
 
 export default function WhatsAppButton() {
   const href = buildWhatsAppLink(WHATSAPP_MESSAGE);

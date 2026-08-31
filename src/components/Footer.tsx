@@ -1,4 +1,8 @@
+"use client";
+
+import type { MouseEvent } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
@@ -29,6 +33,15 @@ const NAV_LINKS = [
 const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  function handleHomeClick(e: MouseEvent<HTMLAnchorElement>) {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
+
   return (
     <footer className="relative overflow-hidden border-t border-background/10 bg-foreground text-background">
       <FooterMarquee />
@@ -36,7 +49,11 @@ export default function Footer() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-1 gap-y-12 text-center lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-8 lg:text-left">
           <div>
-            <Link href="/" className="text-xl font-bold tracking-tight text-background">
+            <Link
+              href="/"
+              onClick={handleHomeClick}
+              className="text-xl font-bold tracking-tight text-background"
+            >
               Softiva <span className="gradient-text">Studio</span>
             </Link>
             <p className="mx-auto mt-4 max-w-xs text-sm text-background/65 lg:mx-0">
@@ -87,6 +104,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={link.href === "/" ? handleHomeClick : undefined}
                     className="text-sm text-background/75 transition-colors hover:text-background"
                   >
                     {link.label}

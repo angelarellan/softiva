@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CheckCircle2, MessageCircle } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import CTASection from "@/components/CTASection";
@@ -73,9 +72,8 @@ export default function ServiciosPage() {
                 (() => {
                   const plan = plans[0];
                   const whatsappHref = buildWhatsAppLink(
-                    `Hola Softiva Studio, quiero consultar por el plan "${plan.title}" 🚀`
+                    `Hola Softiva Studio, quisiera más información sobre el ${plan.title} 🚀`
                   );
-                  const contactHref = `/contacto?plan=${encodeURIComponent(plan.title)}`;
 
                   return (
                     <Reveal delay={0.1} className="mt-8 block w-full">
@@ -92,7 +90,7 @@ export default function ServiciosPage() {
                             </h3>
                             <p className="mt-4 text-muted">{plan.summary}</p>
 
-                            <div className="mt-8 flex flex-wrap gap-3">
+                            <div className="mt-8">
                               <a
                                 href={whatsappHref}
                                 target="_blank"
@@ -100,14 +98,8 @@ export default function ServiciosPage() {
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                               >
                                 <MessageCircle size={16} />
-                                WhatsApp
+                                Consultar
                               </a>
-                              <Link
-                                href={contactHref}
-                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-6 py-2.5 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
-                              >
-                                Cotizar
-                              </Link>
                             </div>
                           </div>
 
@@ -143,9 +135,8 @@ export default function ServiciosPage() {
                 >
                   {plans.map((plan, planIndex) => {
                     const whatsappHref = buildWhatsAppLink(
-                      `Hola Softiva Studio, quiero consultar por el plan "${plan.title}" 🚀`
+                      `Hola Softiva Studio, quisiera más información sobre el ${plan.title} 🚀`
                     );
-                    const contactHref = `/contacto?plan=${encodeURIComponent(plan.title)}`;
 
                     return (
                       <Reveal key={plan.slug} delay={planIndex * 0.1} className="h-full">
@@ -180,7 +171,7 @@ export default function ServiciosPage() {
                             </ul>
                           </div>
 
-                          <div className="mt-8 flex w-full flex-col gap-2">
+                          <div className="mt-8 w-full">
                             <a
                               href={whatsappHref}
                               target="_blank"
@@ -188,14 +179,8 @@ export default function ServiciosPage() {
                               className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                             >
                               <MessageCircle size={16} />
-                              WhatsApp
+                              Consultar
                             </a>
-                            <Link
-                              href={contactHref}
-                              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
-                            >
-                              Cotizar
-                            </Link>
                           </div>
                         </div>
                       </Reveal>
