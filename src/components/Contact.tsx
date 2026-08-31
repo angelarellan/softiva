@@ -3,6 +3,7 @@
 import { useEffect, useState, FormEvent } from "react";
 import { CheckCircle2, Loader2, Mail, MapPin, Send } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 const SERVICES = [
   "Branding & Presencia Digital",
@@ -77,7 +78,12 @@ export default function Contact() {
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">
                 <Mail size={18} className="text-accent-violet" />
               </span>
-              contacto@softivastudio.com
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="transition-colors hover:text-foreground"
+              >
+                {CONTACT_EMAIL}
+              </a>
             </div>
             <div className="flex items-center gap-3 text-sm text-muted">
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">
@@ -176,7 +182,7 @@ export default function Contact() {
             {status === "success" && (
               <p className="flex items-center gap-2 text-sm text-emerald-400">
                 <CheckCircle2 size={16} />
-                ¡Mensaje enviado! Te responderemos pronto.
+                ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.
               </p>
             )}
             {status === "error" && (
