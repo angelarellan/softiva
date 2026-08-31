@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import { CheckCircle2, Loader2, Mail, MapPin, Send } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const SERVICES = [
-  "Desarrollo Web & Landing Pages",
-  "Diseño UI/UX",
-  "Mantenimiento Web",
+  "Branding & Presencia Digital",
+  "Desarrollo Web & Ecommerce",
+  "Marketing Digital & Ads (Meta/Google)",
+  "Contenido & Redes Sociales",
+  "Formación & Capacitación",
   "Otro",
 ];
 
@@ -15,6 +17,14 @@ type Status = "idle" | "loading" | "success" | "error";
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const plan = new URLSearchParams(window.location.search).get("plan");
+    if (plan) {
+      setMessage(`Quiero cotizar el plan "${plan}".`);
+    }
+  }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -40,6 +50,7 @@ export default function Contact() {
 
       setStatus("success");
       form.reset();
+      setMessage("");
     } catch {
       setStatus("error");
     }
@@ -137,6 +148,8 @@ export default function Contact() {
                 name="message"
                 required
                 rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Contanos sobre tu proyecto..."
                 className="mt-2 w-full resize-none rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
               />

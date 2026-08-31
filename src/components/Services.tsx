@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { services } from "@/data/services";
+import { serviceCategories } from "@/data/services";
 import Reveal from "@/components/Reveal";
 
 export default function Services() {
@@ -19,30 +19,30 @@ export default function Services() {
           </div>
         </Reveal>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {services.map(({ slug, icon: Icon, title, summary }, index) => (
-            <Reveal key={slug} delay={index * 0.1} className="h-full">
-              <div className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {serviceCategories.map(({ slug, icon: Icon, title, summary }, index) => (
+            <Reveal key={slug} delay={index * 0.08} className="h-full">
+              <Link
+                href={`/servicios#${slug}`}
+                className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface p-7 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]"
+              >
                 <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gradient-to-br from-accent-blue/20 to-accent-violet/20 opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100" />
 
-                <div className="relative mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-accent-blue to-accent-violet text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <Icon size={26} />
+                <div className="relative mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent-blue to-accent-violet text-white transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <Icon size={22} />
                 </div>
 
-                <h3 className="relative text-xl font-semibold">{title}</h3>
-                <p className="relative mt-3 text-muted">{summary}</p>
+                <h3 className="relative text-lg font-semibold leading-snug">{title}</h3>
+                <p className="relative mt-2 text-sm text-muted">{summary}</p>
 
-                <Link
-                  href="/servicios"
-                  className="relative mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-accent-blue transition-colors hover:text-accent-violet"
-                >
-                  Ver más
+                <span className="relative mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-accent-blue transition-colors group-hover:text-accent-violet">
+                  Ver planes
                   <ArrowRight
                     size={14}
                     className="transition-transform group-hover:translate-x-1"
                   />
-                </Link>
-              </div>
+                </span>
+              </Link>
             </Reveal>
           ))}
         </div>

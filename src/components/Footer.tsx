@@ -12,9 +12,11 @@ const SOCIALS = [
 ];
 
 const SERVICE_LINKS = [
-  { label: "Desarrollo Web", href: "/servicios#desarrollo-web" },
-  { label: "Diseño UI/UX", href: "/servicios#diseno-uiux" },
-  { label: "Mantenimiento Web", href: "/servicios#mantenimiento-web" },
+  { label: "Branding & Presencia Digital", href: "/servicios#branding" },
+  { label: "Desarrollo Web & Ecommerce", href: "/servicios#desarrollo-web-ecommerce" },
+  { label: "Marketing Digital & Ads", href: "/servicios#marketing-performance" },
+  { label: "Contenido & Redes Sociales", href: "/servicios#contenido-redes" },
+  { label: "Formación & Capacitación", href: "/servicios#formacion" },
 ];
 
 const NAV_LINKS = [
