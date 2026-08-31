@@ -24,6 +24,20 @@ export const metadata: Metadata = {
   },
 };
 
+// Orden de presentación específico de /servicios (no altera el orden usado
+// en la Home): Desarrollo Web & Ecommerce primero, Branding en segundo lugar.
+const CATEGORY_ORDER = [
+  "desarrollo-web-ecommerce",
+  "branding",
+  "marketing-performance",
+  "contenido-redes",
+  "formacion",
+];
+
+const orderedCategories = CATEGORY_ORDER.map(
+  (slug) => serviceCategories.find((category) => category.slug === slug)!
+);
+
 export default function ServiciosPage() {
   return (
     <>
@@ -38,7 +52,7 @@ export default function ServiciosPage() {
       />
 
       <div className="mx-auto flex max-w-6xl flex-col gap-24 px-6 pb-28">
-        {serviceCategories.map(
+        {orderedCategories.map(
           ({ slug, icon: CategoryIcon, title, description, plans }, categoryIndex) => (
             <section key={slug} id={slug} className="scroll-mt-28">
               <Reveal delay={categoryIndex * 0.05}>
@@ -55,15 +69,7 @@ export default function ServiciosPage() {
                 </div>
               </Reveal>
 
-              <div
-                className={`mt-8 grid gap-6 ${
-                  plans.length === 1
-                    ? "max-w-xl"
-                    : plans.length === 2
-                    ? "sm:grid-cols-2"
-                    : "sm:grid-cols-2 lg:grid-cols-3"
-                }`}
-              >
+              <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {plans.map((plan, planIndex) => {
                   const whatsappHref = buildWhatsAppLink(
                     `Hola Softiva Studio, quiero consultar por el plan "${plan.title}" 🚀`
@@ -72,50 +78,52 @@ export default function ServiciosPage() {
 
                   return (
                     <Reveal key={plan.slug} delay={planIndex * 0.1} className="h-full">
-                      <div className="group relative flex h-full flex-col rounded-3xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
-                        <div className="flex items-start justify-between gap-3">
-                          <h3 className="text-xl font-bold leading-tight tracking-tight text-balance">
-                            {plan.title}
-                          </h3>
-                          {plan.badge && (
-                            <span className="shrink-0 rounded-full bg-accent-violet/15 px-3 py-1 text-xs font-semibold text-accent-violet">
-                              {plan.badge}
-                            </span>
-                          )}
+                      <div className="flex h-full flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
+                        <div>
+                          <div className="flex items-start justify-between gap-3">
+                            <h3 className="text-xl font-bold leading-tight tracking-tight text-balance">
+                              {plan.title}
+                            </h3>
+                            {plan.badge && (
+                              <span className="shrink-0 rounded-full bg-accent-violet/15 px-3 py-1 text-xs font-semibold text-accent-violet">
+                                {plan.badge}
+                              </span>
+                            )}
+                          </div>
+
+                          <p className="mt-3 text-sm text-muted">{plan.summary}</p>
+
+                          <ul className="mt-6 space-y-3">
+                            {plan.features.map((feature) => (
+                              <li
+                                key={feature}
+                                className="flex items-start gap-2 text-sm text-foreground"
+                              >
+                                <CheckCircle2
+                                  size={18}
+                                  className="mt-0.5 shrink-0 text-accent-mint"
+                                />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
 
-                        <p className="mt-3 text-sm text-muted">{plan.summary}</p>
-
-                        <ul className="mt-6 flex-1 space-y-3">
-                          {plan.features.map((feature) => (
-                            <li
-                              key={feature}
-                              className="flex items-start gap-2 text-sm text-foreground"
-                            >
-                              <CheckCircle2
-                                size={18}
-                                className="mt-0.5 shrink-0 text-accent-mint"
-                              />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-
-                        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                        <div className="mt-8 flex w-full flex-col gap-2">
                           <a
                             href={whatsappHref}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-glow inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                           >
                             <MessageCircle size={16} />
-                            Consultar por WhatsApp
+                            WhatsApp
                           </a>
                           <Link
                             href={contactHref}
-                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-border bg-surface-2 px-5 py-3 text-sm font-semibold text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
+                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
                           >
-                            Cotizar Plan
+                            Cotizar
                           </Link>
                         </div>
                       </div>

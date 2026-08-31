@@ -21,6 +21,21 @@ const FAQS = [
     answer:
       "Sí, todos nuestros desarrollos son responsive por defecto: se adaptan y funcionan perfectamente en celulares, tablets y notebooks.",
   },
+  {
+    question: "¿Puedo solicitar un plan personalizado que combine Web y Marketing Digital?",
+    answer:
+      "Sí, diseñamos estrategias a medida según la etapa de tu negocio. Podés combinar desarrollo web con campañas activas en Meta o Google Ads.",
+  },
+  {
+    question: "¿Qué necesito para empezar a correr campañas de Meta o Google Ads?",
+    answer:
+      "Solo necesitamos acceso a tus cuentas comerciales (o te ayudamos a crearlas desde cero). Nosotros nos encargamos de la configuración técnica del Pixel, GA4, la segmentación y el diseño de los anuncios.",
+  },
+  {
+    question: "¿El sitio web incluye soporte y mantenimiento posterior al lanzamiento?",
+    answer:
+      "Todos nuestros desarrollos incluyen garantía de funcionamiento inicial, optimización SEO y te ofrecemos planes opcionales de mantenimiento mensual para actualizar contenidos y mantener la web segura.",
+  },
 ];
 
 export default function FAQ() {
