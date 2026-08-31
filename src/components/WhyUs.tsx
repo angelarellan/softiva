@@ -34,7 +34,7 @@ export default function WhyUs() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-blue">
-              Por qué elegir Softiva
+              Por qué elegir Softiva Studio
             </span>
             <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
               Resultados que se{" "}

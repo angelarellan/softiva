@@ -11,7 +11,7 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-const TITLE = "Softiva | Agencia de Desarrollo Web, UI/UX y Soluciones Digitales";
+const TITLE = "Softiva Studio | Soluciones Digitales & Desarrollo Web";
 const DESCRIPTION =
   "Creamos sitios web de alto rendimiento, landing pages y diseños UI/UX para marcas que quieren destacar.";
 

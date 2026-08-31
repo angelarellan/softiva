@@ -5,9 +5,9 @@ import CTASection from "@/components/CTASection";
 import Reveal from "@/components/Reveal";
 import { SITE_NAME } from "@/lib/site";
 
-const TITLE = "Nosotros | Softiva";
+const TITLE = "Nosotros | Softiva Studio";
 const DESCRIPTION =
-  "Conocé la filosofía de Softiva: una agencia enfocada en diseño de alto nivel, código limpio y resultados medibles.";
+  "Conocé la filosofía de Softiva Studio: una agencia enfocada en diseño de alto nivel, código limpio y resultados medibles.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -88,7 +88,7 @@ export default function NosotrosPage() {
             <span className="gradient-text">resultados, no en plantillas</span>
           </>
         }
-        description="Softiva nace para acompañar a marcas y negocios que quieren una presencia digital de alto nivel, sin atajos ni soluciones genéricas."
+        description="Softiva Studio nace para acompañar a marcas y negocios que quieren una presencia digital de alto nivel, sin atajos ni soluciones genéricas."
       />
 
       <section className="pb-24">

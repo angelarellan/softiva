@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 const MARQUEE_TEXT = "SOFTIVA STUDIO • SOLUCIONES DIGITALES • DESARROLLO WEB • ";
 
 export default function FooterMarquee() {
@@ -10,11 +6,7 @@ export default function FooterMarquee() {
       aria-hidden="true"
       className="pointer-events-none absolute inset-0 flex select-none items-center overflow-hidden whitespace-nowrap"
     >
-      <motion.div
-        className="flex shrink-0"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 55, ease: "linear", repeat: Infinity }}
-      >
+      <div className="animate-marquee flex shrink-0">
         {[0, 1].map((i) => (
           <span
             key={i}
@@ -23,7 +15,7 @@ export default function FooterMarquee() {
             {MARQUEE_TEXT.repeat(4)}
           </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

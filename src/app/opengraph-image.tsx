@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Softiva — Agencia de Desarrollo Web y Diseño UI/UX";
+export const alt = "Softiva Studio — Agencia de Desarrollo Web y Diseño UI/UX";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

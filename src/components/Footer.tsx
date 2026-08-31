@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { InstagramIcon, LinkedinIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { CONTACT_EMAIL } from "@/lib/site";
 import FooterMarquee from "@/components/FooterMarquee";
 
 const SOCIALS = [
@@ -23,8 +24,7 @@ const NAV_LINKS = [
   { label: "Contacto", href: "/contacto" },
 ];
 
-const CONTACT_EMAIL = "hola@softiva.com";
-const WHATSAPP_MESSAGE = "Hola Softiva, quiero iniciar un proyecto 🚀";
+const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
 
 export default function Footer() {
   return (
@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-y-12 text-center lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-8 lg:text-left">
           <div>
             <Link href="/" className="text-xl font-bold tracking-tight text-background">
-              Soft<span className="gradient-text">iva</span>
+              Softiva <span className="gradient-text">Studio</span>
             </Link>
             <p className="mx-auto mt-4 max-w-xs text-sm text-background/65 lg:mx-0">
               Desarrollo web y diseño digital de alto nivel para marcas que
@@ -129,7 +129,7 @@ export default function Footer() {
 
         <div className="mt-14 border-t border-background/10 pt-8 text-center">
           <p className="text-sm text-background/60">
-            © {new Date().getFullYear()} Softiva. Todos los derechos reservados.
+            © {new Date().getFullYear()} Softiva Studio. Todos los derechos reservados.
           </p>
         </div>
       </div>

@@ -7,7 +7,7 @@ import Reveal from "@/components/Reveal";
 import { services } from "@/data/services";
 import { SITE_NAME } from "@/lib/site";
 
-const TITLE = "Servicios | Softiva";
+const TITLE = "Servicios | Softiva Studio";
 const DESCRIPTION =
   "Desarrollo web, diseño UI/UX y mantenimiento web de alto nivel para tu marca.";
 

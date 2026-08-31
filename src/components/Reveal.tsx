@@ -1,7 +1,4 @@
-"use client";
-
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type RevealProps = {
   children: ReactNode;
@@ -10,17 +7,20 @@ type RevealProps = {
   id?: string;
 };
 
+/**
+ * Entrance animation done in pure CSS (see .animate-reveal in globals.css)
+ * instead of framer-motion's whileInView. Content is part of the initial
+ * HTML and stays visible even if JS is slow to hydrate or fails to load —
+ * only the transition itself depends on CSS, never on React mounting.
+ */
 export default function Reveal({ children, delay = 0, className, id }: RevealProps) {
   return (
-    <motion.div
+    <div
       id={id}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-      className={className}
+      className={`animate-reveal${className ? ` ${className}` : ""}`}
+      style={{ "--reveal-delay": `${delay}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

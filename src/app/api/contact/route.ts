@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { CONTACT_EMAIL } from "@/lib/site";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -19,7 +20,8 @@ export async function POST(request: Request) {
   }
 
   // TODO: integrar con un proveedor de email (Resend, SendGrid, etc.) o CRM.
-  console.log("Nuevo contacto Softiva:", {
+  // Los mensajes deben enviarse/notificarse a CONTACT_EMAIL (contacto@softivastudio.com).
+  console.log(`Nuevo contacto Softiva Studio (para ${CONTACT_EMAIL}):`, {
     name: body.name,
     email: body.email,
     service: body.service ?? "No especificado",

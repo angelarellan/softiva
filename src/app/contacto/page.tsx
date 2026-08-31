@@ -3,9 +3,9 @@ import PageHeader from "@/components/PageHeader";
 import Contact from "@/components/Contact";
 import { SITE_NAME } from "@/lib/site";
 
-const TITLE = "Contacto | Softiva";
+const TITLE = "Contacto | Softiva Studio";
 const DESCRIPTION =
-  "Contanos sobre tu proyecto y recibí una propuesta a medida de Softiva.";
+  "Contanos sobre tu proyecto y recibí una propuesta a medida de Softiva Studio.";
 
 export const metadata: Metadata = {
   title: TITLE,

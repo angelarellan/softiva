@@ -6,9 +6,9 @@ import Reveal from "@/components/Reveal";
 import { projects } from "@/data/projects";
 import { SITE_NAME } from "@/lib/site";
 
-const TITLE = "Portafolio | Softiva";
+const TITLE = "Portafolio | Softiva Studio";
 const DESCRIPTION =
-  "Proyectos de desarrollo web, e-commerce, dashboards y branding realizados por Softiva.";
+  "Proyectos de desarrollo web, e-commerce, dashboards y branding realizados por Softiva Studio.";
 
 export const metadata: Metadata = {
   title: TITLE,

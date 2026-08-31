@@ -22,7 +22,7 @@ export default function Hero() {
 
         <Reveal delay={0.1}>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">
-            En Softiva creamos páginas web y diseños de alto nivel: rápidos,
+            En Softiva Studio creamos páginas web y diseños de alto nivel: rápidos,
             modernos y pensados para convertir. Llevamos tu marca al siguiente
             nivel con tecnología y diseño de punta.
           </p>

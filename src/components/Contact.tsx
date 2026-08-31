@@ -66,7 +66,7 @@ export default function Contact() {
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">
                 <Mail size={18} className="text-accent-violet" />
               </span>
-              hola@softiva.com
+              contacto@softivastudio.com
             </div>
             <div className="flex items-center gap-3 text-sm text-muted">
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">

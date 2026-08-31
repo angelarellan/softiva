@@ -39,7 +39,7 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="text-xl font-bold tracking-tight">
-          Soft<span className="gradient-text">iva</span>
+          Softiva <span className="gradient-text">Studio</span>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
