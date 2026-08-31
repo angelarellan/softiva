@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
-import { InstagramIcon, LinkedinIcon } from "@/components/SocialIcons";
+import { FacebookIcon, InstagramIcon, LinkedinIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { CONTACT_EMAIL } from "@/lib/site";
 import FooterMarquee from "@/components/FooterMarquee";
 
 const SOCIALS = [
-  { label: "Instagram", href: "https://instagram.com/softiva", Icon: InstagramIcon },
+  { label: "Instagram", href: "https://www.instagram.com/softivastudio/", Icon: InstagramIcon },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61594213251129", Icon: FacebookIcon },
   { label: "LinkedIn", href: "https://linkedin.com/company/softiva", Icon: LinkedinIcon },
 ];
 
