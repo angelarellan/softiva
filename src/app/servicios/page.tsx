@@ -69,68 +69,140 @@ export default function ServiciosPage() {
                 </div>
               </Reveal>
 
-              <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {plans.map((plan, planIndex) => {
+              {plans.length === 1 ? (
+                (() => {
+                  const plan = plans[0];
                   const whatsappHref = buildWhatsAppLink(
                     `Hola Softiva Studio, quiero consultar por el plan "${plan.title}" 🚀`
                   );
                   const contactHref = `/contacto?plan=${encodeURIComponent(plan.title)}`;
 
                   return (
-                    <Reveal key={plan.slug} delay={planIndex * 0.1} className="h-full">
-                      <div className="flex h-full flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
-                        <div>
-                          <div className="flex items-start justify-between gap-3">
-                            <h3 className="text-xl font-bold leading-tight tracking-tight text-balance">
-                              {plan.title}
-                            </h3>
+                    <Reveal delay={0.1} className="mt-8 block w-full">
+                      <div className="w-full rounded-3xl border border-border bg-surface shadow-sm transition-all duration-300 hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
+                        <div className="grid grid-cols-1 gap-8 p-8 md:p-10 lg:grid-cols-2">
+                          <div className="flex flex-col justify-center">
                             {plan.badge && (
-                              <span className="shrink-0 rounded-full bg-accent-violet/15 px-3 py-1 text-xs font-semibold text-accent-violet">
+                              <span className="mb-4 inline-flex w-fit rounded-full bg-accent-violet/15 px-3 py-1 text-xs font-semibold text-accent-violet">
                                 {plan.badge}
                               </span>
                             )}
+                            <h3 className="text-2xl font-bold leading-tight tracking-tight text-balance sm:text-3xl">
+                              {plan.title}
+                            </h3>
+                            <p className="mt-4 text-muted">{plan.summary}</p>
+
+                            <div className="mt-8 flex flex-wrap gap-3">
+                              <a
+                                href={whatsappHref}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                              >
+                                <MessageCircle size={16} />
+                                WhatsApp
+                              </a>
+                              <Link
+                                href={contactHref}
+                                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-6 py-2.5 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
+                              >
+                                Cotizar
+                              </Link>
+                            </div>
                           </div>
 
-                          <p className="mt-3 text-sm text-muted">{plan.summary}</p>
-
-                          <ul className="mt-6 space-y-3">
-                            {plan.features.map((feature) => (
-                              <li
-                                key={feature}
-                                className="flex items-start gap-2 text-sm text-foreground"
-                              >
-                                <CheckCircle2
-                                  size={18}
-                                  className="mt-0.5 shrink-0 text-accent-mint"
-                                />
-                                {feature}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-
-                        <div className="mt-8 flex w-full flex-col gap-2">
-                          <a
-                            href={whatsappHref}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
-                          >
-                            <MessageCircle size={16} />
-                            WhatsApp
-                          </a>
-                          <Link
-                            href={contactHref}
-                            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
-                          >
-                            Cotizar
-                          </Link>
+                          <div className="border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                            <h4 className="text-sm font-semibold uppercase tracking-wider text-muted">
+                              ¿Qué incluye este plan?
+                            </h4>
+                            <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                              {plan.features.map((feature) => (
+                                <li
+                                  key={feature}
+                                  className="flex items-start gap-2 text-sm text-foreground"
+                                >
+                                  <CheckCircle2
+                                    size={18}
+                                    className="mt-0.5 shrink-0 text-accent-mint"
+                                  />
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
                       </div>
                     </Reveal>
                   );
-                })}
-              </div>
+                })()
+              ) : (
+                <div
+                  className={`mt-8 grid grid-cols-1 gap-8 ${
+                    plans.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+                  }`}
+                >
+                  {plans.map((plan, planIndex) => {
+                    const whatsappHref = buildWhatsAppLink(
+                      `Hola Softiva Studio, quiero consultar por el plan "${plan.title}" 🚀`
+                    );
+                    const contactHref = `/contacto?plan=${encodeURIComponent(plan.title)}`;
+
+                    return (
+                      <Reveal key={plan.slug} delay={planIndex * 0.1} className="h-full">
+                        <div className="flex h-full flex-col justify-between rounded-3xl border border-border bg-surface p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-violet/40 hover:shadow-[0_20px_45px_-15px_rgba(155,123,234,0.3)]">
+                          <div>
+                            <div className="flex items-start justify-between gap-3">
+                              <h3 className="text-xl font-bold leading-tight tracking-tight text-balance">
+                                {plan.title}
+                              </h3>
+                              {plan.badge && (
+                                <span className="shrink-0 rounded-full bg-accent-violet/15 px-3 py-1 text-xs font-semibold text-accent-violet">
+                                  {plan.badge}
+                                </span>
+                              )}
+                            </div>
+
+                            <p className="mt-3 text-sm text-muted">{plan.summary}</p>
+
+                            <ul className="mt-6 space-y-3">
+                              {plan.features.map((feature) => (
+                                <li
+                                  key={feature}
+                                  className="flex items-start gap-2 text-sm text-foreground"
+                                >
+                                  <CheckCircle2
+                                    size={18}
+                                    className="mt-0.5 shrink-0 text-accent-mint"
+                                  />
+                                  {feature}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div className="mt-8 flex w-full flex-col gap-2">
+                            <a
+                              href={whatsappHref}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+                            >
+                              <MessageCircle size={16} />
+                              WhatsApp
+                            </a>
+                            <Link
+                              href={contactHref}
+                              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-surface-2 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-200 hover:border-accent-violet/60 hover:bg-surface"
+                            >
+                              Cotizar
+                            </Link>
+                          </div>
+                        </div>
+                      </Reveal>
+                    );
+                  })}
+                </div>
+              )}
             </section>
           )
         )}
