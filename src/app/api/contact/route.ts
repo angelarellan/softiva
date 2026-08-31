@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { CONTACT_EMAIL, CONTACT_FROM_EMAIL } from "@/lib/site";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
   try {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || "Softiva Studio <onboarding@resend.dev>",
+      from: process.env.RESEND_FROM_EMAIL || CONTACT_FROM_EMAIL,
       to: CONTACT_EMAIL,
       replyTo: email,
       subject: `Nuevo contacto: ${name} — ${service}`,
