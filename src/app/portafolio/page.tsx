@@ -31,7 +31,7 @@ export default function PortafolioPage() {
             <span className="gradient-text">hablan por sí solos</span>
           </>
         }
-        description="Una selección de trabajos de demostración que muestran el estilo y la calidad con la que encaramos cada proyecto."
+        description="Una selección de proyectos que muestran el estilo y la calidad con la que encaramos cada trabajo."
       />
 
       <section className="pb-10 md:pb-12">
@@ -50,7 +50,7 @@ export default function PortafolioPage() {
                     />
                     <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/40" />
                     <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white backdrop-blur">
-                      Proyecto Demo
+                      {project.category.split(" · ")[0]}
                     </span>
                     <div className="absolute inset-0 flex flex-col justify-end p-6">
                       <h3 className="text-xl font-semibold text-white">
