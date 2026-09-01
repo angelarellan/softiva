@@ -127,7 +127,7 @@ export default function PromoVideo() {
   }
 
   return (
-    <section className="pt-4 pb-4 md:pt-12 md:pb-12">
+    <section className="pt-0 pb-4 md:pt-12 md:pb-12">
       <div ref={containerRef} className="w-full">
         <Reveal>
           <div className="relative w-full overflow-hidden bg-black">
