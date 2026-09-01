@@ -18,6 +18,9 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: PAGE_TITLE,
   description: DESCRIPTION,
+  alternates: {
+    canonical: "/nosotros",
+  },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,

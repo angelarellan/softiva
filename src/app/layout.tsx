@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "desarrollo web",
     "diseño web",
