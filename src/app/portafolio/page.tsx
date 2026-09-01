@@ -6,6 +6,11 @@ import Reveal from "@/components/Reveal";
 import { projects } from "@/data/projects";
 import { SITE_NAME } from "@/lib/site";
 
+// Página 100% estática (SSG): sin headers()/cookies() ni fetch sin
+// cache en el render, se pre-renderiza en build time.
+export const dynamic = "force-static";
+export const revalidate = false;
+
 const PAGE_TITLE = "Portafolio";
 const TITLE = "Portafolio | Softiva Studio";
 const DESCRIPTION =

@@ -3,6 +3,13 @@ import PageHeader from "@/components/PageHeader";
 import Contact from "@/components/Contact";
 import { SITE_NAME } from "@/lib/site";
 
+// Página 100% estática (SSG): el formulario en sí es un componente
+// cliente que lee ?plan= con window.location en un useEffect, no server-
+// side, así que la página no depende de headers()/cookies()/searchParams
+// en el render y se puede pre-renderizar en build time.
+export const dynamic = "force-static";
+export const revalidate = false;
+
 const PAGE_TITLE = "Contacto";
 const TITLE = "Contacto | Softiva Studio";
 const DESCRIPTION =

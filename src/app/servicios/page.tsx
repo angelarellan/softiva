@@ -8,6 +8,11 @@ import { serviceCategories } from "@/data/services";
 import { SITE_NAME } from "@/lib/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
+// Página 100% estática (SSG): sin headers()/cookies() ni fetch sin
+// cache en el render, se pre-renderiza en build time.
+export const dynamic = "force-static";
+export const revalidate = false;
+
 const PAGE_TITLE = "Servicios";
 const TITLE = "Servicios | Softiva Studio";
 const DESCRIPTION =

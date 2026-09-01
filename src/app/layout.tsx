@@ -65,6 +65,17 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${jakarta.variable} h-full antialiased`}
       style={{ backgroundColor: "#f7f8fb" }}
     >
+      <head>
+        {/*
+          next/font/google ya descarga y autohospeda Plus_Jakarta_Sans en
+          build time: el navegador nunca llega a pedirle nada a Google en
+          runtime. Estos hints quedan sin efecto real para esa fuente, pero
+          se agregan igual (son inofensivos) por si en el futuro se suma
+          algún recurso servido directo desde fonts.googleapis.com.
+        */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+      </head>
       <body
         className="min-h-full flex flex-col bg-background text-foreground"
         style={{ backgroundColor: "#f7f8fb" }}
