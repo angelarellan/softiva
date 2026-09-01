@@ -115,11 +115,12 @@ export default function PromoVideo() {
 
     const next = !muted;
     video.muted = next;
+    video.volume = 1.0;
     setMuted(next);
 
     // Si el navegador frena el audio por su política de autoplay, forzamos
     // un play() limpio (ya disparado por el propio click del usuario) para
-    // que la reproducción siga sin cortes al desmutear.
+    // que la reproducción con sonido siga sin cortes al desmutear.
     if (!next) {
       video.play().catch(() => {});
     }
