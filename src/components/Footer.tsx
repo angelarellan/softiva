@@ -118,34 +118,32 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-background/50">
               Contacto
             </h3>
-            <div className="mt-4 rounded-2xl border border-accent-violet/30 bg-background/[0.04] p-5">
-              <ul className="space-y-3">
-                <li>
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="flex items-center justify-center gap-2 text-sm text-background/80 transition-colors hover:text-background lg:justify-start"
-                  >
-                    <Mail size={16} className="shrink-0 text-accent-violet" />
-                    {CONTACT_EMAIL}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 text-sm text-background/80 transition-colors hover:text-background lg:justify-start"
-                  >
-                    <MessageCircle size={16} className="shrink-0 text-accent-mint" />
-                    +54 3543635504
-                  </a>
-                </li>
-                <li className="flex flex-col items-center gap-1.5 text-center text-sm text-background/80 lg:flex-row lg:items-start lg:gap-2 lg:text-left">
-                  <MapPin size={16} className="shrink-0 text-accent-blue" />
-                  <span>Atención personalizada para proyectos globales.</span>
-                </li>
-              </ul>
-            </div>
+            <ul className="mt-4 space-y-2 sm:space-y-3">
+              <li>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="flex items-center justify-center gap-2 text-sm text-background/80 transition-colors hover:text-background lg:justify-start"
+                >
+                  <Mail size={16} className="shrink-0 text-accent-violet" />
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-sm text-background/80 transition-colors hover:text-background lg:justify-start"
+                >
+                  <MessageCircle size={16} className="shrink-0 text-accent-mint" />
+                  +54 3543635504
+                </a>
+              </li>
+              <li className="flex items-center justify-center gap-2 text-sm text-background/80 lg:justify-start">
+                <MapPin size={16} className="shrink-0 text-accent-blue" />
+                <span>Atención para proyectos globales</span>
+              </li>
+            </ul>
           </div>
         </div>
 
