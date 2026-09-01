@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import PromoVideo from "@/components/PromoVideo";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import Portfolio from "@/components/Portfolio";
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <PromoVideo />
       <Services />
       <WhyUs />
       <Portfolio />
