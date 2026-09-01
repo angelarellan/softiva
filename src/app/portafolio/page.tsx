@@ -34,7 +34,7 @@ export default function PortafolioPage() {
         description="Una selección de trabajos de demostración que muestran el estilo y la calidad con la que encaramos cada proyecto."
       />
 
-      <section className="pb-28">
+      <section className="pb-10 md:pb-12">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
@@ -49,6 +49,9 @@ export default function PortafolioPage() {
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-black/30 transition-colors duration-300 group-hover:bg-black/40" />
+                    <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white backdrop-blur">
+                      Proyecto Demo
+                    </span>
                     <div className="absolute inset-0 flex flex-col justify-end p-6">
                       <h3 className="text-xl font-semibold text-white">
                         {project.title}
@@ -74,10 +77,6 @@ export default function PortafolioPage() {
               </Reveal>
             ))}
           </div>
-
-          <p className="mt-10 text-center text-sm text-muted">
-            * Proyectos de demostración con fines ilustrativos.
-          </p>
         </div>
       </section>
 

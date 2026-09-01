@@ -42,7 +42,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="pb-28">
+    <section className="pb-10 md:pb-12">
       <div className="mx-auto max-w-3xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-lg font-semibold uppercase tracking-widest text-accent-violet">

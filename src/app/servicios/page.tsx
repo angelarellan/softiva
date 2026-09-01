@@ -50,7 +50,7 @@ export default function ServiciosPage() {
         description="Desde la identidad de marca hasta la publicidad y la formación de tu equipo: un catálogo pensado para acompañar cada etapa de tu negocio."
       />
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-24 px-6 pb-28">
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-10 md:gap-20 md:pb-12">
         {orderedCategories.map(
           ({ slug, icon: CategoryIcon, title, description, plans }, categoryIndex) => (
             <section key={slug} id={slug} className="scroll-mt-28">

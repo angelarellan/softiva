@@ -58,7 +58,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative pb-28">
+    <section className="relative pb-10 md:pb-12">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute bottom-0 left-1/2 h-96 w-[40rem] -translate-x-1/2 rounded-full bg-accent-violet/15 blur-[140px]" />
       </div>

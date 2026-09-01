@@ -4,7 +4,7 @@ import Reveal from "@/components/Reveal";
 
 export default function CTASection() {
   return (
-    <section className="relative py-24">
+    <section className="relative py-10 md:py-12">
       <div className="mx-auto max-w-4xl px-6">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl border border-border bg-surface px-8 py-14 text-center">

@@ -91,7 +91,7 @@ export default function NosotrosPage() {
         description="Softiva Studio nace para acompañar a marcas y negocios que quieren una presencia digital de alto nivel, sin atajos ni soluciones genéricas."
       />
 
-      <section className="pb-24">
+      <section className="pb-10 md:pb-12">
         <Reveal className="mx-auto max-w-4xl px-6 text-center">
           <h2 className="text-2xl font-bold leading-tight tracking-tight text-balance sm:text-3xl">
             Nuestra filosofía
@@ -123,7 +123,7 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      <section className="relative pb-28">
+      <section className="relative pb-10 md:pb-12">
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-surface to-transparent" />
 
         <div className="relative mx-auto max-w-5xl px-6">
