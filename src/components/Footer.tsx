@@ -1,13 +1,10 @@
-"use client";
-
-import type { MouseEvent } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { CONTACT_EMAIL } from "@/lib/site";
 import FooterMarquee from "@/components/FooterMarquee";
+import ScrollTopLink from "@/components/ScrollTopLink";
 
 const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/softivastudio/", Icon: InstagramIcon },
@@ -33,15 +30,6 @@ const NAV_LINKS = [
 const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
 
 export default function Footer() {
-  const pathname = usePathname();
-
-  function handleHomeClick(e: MouseEvent<HTMLAnchorElement>) {
-    if (pathname === "/") {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }
-
   return (
     <footer className="relative overflow-hidden border-t border-background/10 bg-foreground text-background">
       <FooterMarquee />
@@ -49,13 +37,12 @@ export default function Footer() {
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-16">
         <div className="grid grid-cols-1 gap-y-12 text-center lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-8 lg:text-left">
           <div>
-            <Link
+            <ScrollTopLink
               href="/"
-              onClick={handleHomeClick}
               className="text-xl font-bold tracking-tight text-background"
             >
               Softiva <span className="gradient-text">Studio</span>
-            </Link>
+            </ScrollTopLink>
             <p className="mx-auto mt-4 max-w-xs text-sm text-background/80 lg:mx-0">
               Desarrollo web y diseño digital de alto nivel para marcas que
               quieren destacar.
@@ -102,13 +89,21 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 sm:space-y-3">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={link.href === "/" ? handleHomeClick : undefined}
-                    className="text-sm text-background/75 transition-colors hover:text-background"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.href === "/" ? (
+                    <ScrollTopLink
+                      href={link.href}
+                      className="text-sm text-background/75 transition-colors hover:text-background"
+                    >
+                      {link.label}
+                    </ScrollTopLink>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm text-background/75 transition-colors hover:text-background"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

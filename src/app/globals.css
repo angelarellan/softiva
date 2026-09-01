@@ -108,12 +108,23 @@ body {
 /* Scroll/entrance reveal — pure CSS so content is visible even if JS
    hasn't hydrated yet (no framer-motion opacity:0-until-hydration flash). */
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(var(--reveal-distance, 28px)); }
   to { opacity: 1; transform: translateY(0); }
 }
 .animate-reveal {
   animation: reveal-up 0.6s ease-out both;
   animation-delay: var(--reveal-delay, 0s);
+}
+
+/* En mobile acortamos distancia y duración: menos trabajo de compositor
+   por frame en procesadores más lentos. No usamos will-change acá porque
+   es una animación de una sola vez al cargar -- dejar la capa promovida
+   después de terminar solo gastaría memoria de GPU sin ningún beneficio. */
+@media (max-width: 640px) {
+  .animate-reveal {
+    --reveal-distance: 10px;
+    animation-duration: 0.35s;
+  }
 }
 
 /* Footer marquee — pure CSS infinite scroll, no JS required */
