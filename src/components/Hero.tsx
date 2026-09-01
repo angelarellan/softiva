@@ -12,7 +12,7 @@ export default function Hero() {
         <div className="animate-float-slow absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent-mint/20 blur-[110px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-0 text-center md:py-24">
+      <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-8 text-center md:py-24">
         <Reveal>
           <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
             Transformamos ideas en{" "}
