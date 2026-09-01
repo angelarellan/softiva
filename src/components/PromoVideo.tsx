@@ -1,14 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Volume2, VolumeX } from "lucide-react";
+import { Pause, Play, Volume2, VolumeX } from "lucide-react";
 import Reveal from "@/components/Reveal";
+
+const CONTROL_BUTTON_CLASS =
+  "flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/60 text-white backdrop-blur-md transition-all duration-200 hover:scale-110 hover:bg-black/80";
 
 export default function PromoVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
   const [muted, setMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   // Solo empezamos a descargar/reproducir el video cuando entra en viewport,
@@ -45,10 +49,29 @@ export default function PromoVideo() {
 
     video.load();
     video.play().catch(() => {
-      // Autoplay bloqueado por el navegador: el usuario puede iniciar la
-      // reproducción manualmente tocando el video.
+      // Autoplay bloqueado por el navegador: el usuario puede arrancar la
+      // reproducción manualmente con el botón de play.
+      setIsPlaying(false);
     });
   }, [shouldLoad]);
+
+  // Mantiene el ícono de play/pausa sincronizado con el estado real del
+  // video (por si se pausa/reanuda por fuera de nuestros propios botones).
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+
+    return () => {
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+    };
+  }, []);
 
   // En pantalla completa (fullscreen API en desktop/Android, o el player
   // nativo de iOS vía webkitbeginfullscreen) pasamos de object-cover a
@@ -75,11 +98,31 @@ export default function PromoVideo() {
     };
   }, []);
 
-  function toggleMute() {
-    const next = !muted;
+  function togglePlay() {
     const video = videoRef.current;
-    if (video) video.muted = next;
+    if (!video) return;
+
+    if (video.paused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }
+
+  function toggleMute() {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const next = !muted;
+    video.muted = next;
     setMuted(next);
+
+    // Si el navegador frena el audio por su política de autoplay, forzamos
+    // un play() limpio (ya disparado por el propio click del usuario) para
+    // que la reproducción siga sin cortes al desmutear.
+    if (!next) {
+      video.play().catch(() => {});
+    }
   }
 
   return (
@@ -103,14 +146,24 @@ export default function PromoVideo() {
             </video>
 
             {shouldLoad && (
-              <button
-                type="button"
-                onClick={toggleMute}
-                aria-label={muted ? "Activar sonido" : "Silenciar"}
-                className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur transition-all duration-200 hover:scale-110 hover:bg-black/70"
-              >
-                {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-              </button>
+              <div className="absolute bottom-4 right-4 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  aria-label={isPlaying ? "Pausar" : "Reproducir"}
+                  className={CONTROL_BUTTON_CLASS}
+                >
+                  {isPlaying ? <Pause size={18} /> : <Play size={18} />}
+                </button>
+                <button
+                  type="button"
+                  onClick={toggleMute}
+                  aria-label={muted ? "Activar sonido" : "Silenciar"}
+                  className={CONTROL_BUTTON_CLASS}
+                >
+                  {muted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+                </button>
+              </div>
             )}
           </div>
         </Reveal>
