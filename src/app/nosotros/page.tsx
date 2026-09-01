@@ -5,12 +5,13 @@ import CTASection from "@/components/CTASection";
 import Reveal from "@/components/Reveal";
 import { SITE_NAME } from "@/lib/site";
 
+const PAGE_TITLE = "Nosotros";
 const TITLE = "Nosotros | Softiva Studio";
 const DESCRIPTION =
   "Conocé la filosofía de Softiva Studio: una agencia enfocada en diseño de alto nivel, código limpio y resultados medibles.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: PAGE_TITLE,
   description: DESCRIPTION,
   openGraph: {
     title: TITLE,

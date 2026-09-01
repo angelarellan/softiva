@@ -6,12 +6,13 @@ import Reveal from "@/components/Reveal";
 import { projects } from "@/data/projects";
 import { SITE_NAME } from "@/lib/site";
 
+const PAGE_TITLE = "Portafolio";
 const TITLE = "Portafolio | Softiva Studio";
 const DESCRIPTION =
   "Proyectos de desarrollo web, e-commerce, dashboards y branding realizados por Softiva Studio.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: PAGE_TITLE,
   description: DESCRIPTION,
   openGraph: {
     title: TITLE,

@@ -39,14 +39,14 @@ export default async function OpengraphImage() {
           style={{
             display: "flex",
             marginTop: 40,
-            fontSize: 140,
+            fontSize: 120,
             fontWeight: 800,
             letterSpacing: -4,
             color: "#f5f5fa",
           }}
         >
-          Soft
-          <span style={{ color: "#a259ff" }}>iva</span>
+          Softiva&nbsp;
+          <span style={{ color: "#a259ff" }}>Studio</span>
         </div>
 
         <div

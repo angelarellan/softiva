@@ -8,12 +8,13 @@ import { serviceCategories } from "@/data/services";
 import { SITE_NAME } from "@/lib/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 
+const PAGE_TITLE = "Servicios";
 const TITLE = "Servicios | Softiva Studio";
 const DESCRIPTION =
   "Branding, desarrollo web, marketing digital, contenido y formación: el catálogo completo de servicios de Softiva Studio.";
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: PAGE_TITLE,
   description: DESCRIPTION,
   openGraph: {
     title: TITLE,

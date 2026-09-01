@@ -9,23 +9,46 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
+  display: "swap",
+  preload: true,
 });
 
-const TITLE = "Softiva Studio | Soluciones Digitales & Desarrollo Web";
+const TITLE = "Softiva Studio | Desarrollo Web & Diseño Digital";
 const DESCRIPTION =
-  "Creamos sitios web de alto rendimiento, landing pages y diseños UI/UX para marcas que quieren destacar.";
+  "Agencia especializada en desarrollo web de alto rendimiento, e-commerce, branding y marketing digital. Transformamos visitas en clientes.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: TITLE,
+  title: {
+    default: TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
   description: DESCRIPTION,
+  keywords: [
+    "desarrollo web",
+    "diseño web",
+    "e-commerce",
+    "marketing digital",
+    "landing pages",
+    "agencia digital",
+  ],
+  authors: [{ name: SITE_NAME }],
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    type: "website",
-    siteName: SITE_NAME,
     url: SITE_URL,
+    siteName: SITE_NAME,
     locale: "es_AR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
   icons: {
     icon: "/icon.png",
