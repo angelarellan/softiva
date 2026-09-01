@@ -136,7 +136,7 @@ export default function PromoVideo() {
               className={`aspect-video w-full ${
                 isFullscreen ? "object-contain" : "object-cover"
               }`}
-              poster="/video-promo-poster.jpg"
+              poster="/promo-poster.webp"
               autoPlay
               loop
               muted={muted}
