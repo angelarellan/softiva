@@ -128,9 +128,9 @@ export default function PromoVideo() {
 
   return (
     <section className="py-10 md:py-12">
-      <div ref={containerRef} className="mx-auto max-w-5xl px-6">
+      <div ref={containerRef} className="mx-auto w-full max-w-[1400px] px-0">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-border bg-black shadow-sm">
+          <div className="relative w-full overflow-hidden rounded-3xl border border-border bg-black shadow-sm">
             <video
               ref={videoRef}
               className={`aspect-video w-full ${
