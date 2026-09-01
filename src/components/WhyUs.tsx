@@ -27,7 +27,7 @@ const BENEFITS = [
 
 export default function WhyUs() {
   return (
-    <section className="relative py-10 md:py-12">
+    <section className="relative py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:auto_800px]">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-surface to-transparent" />
 
       <div className="relative mx-auto max-w-6xl px-6">

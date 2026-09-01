@@ -116,17 +116,6 @@ body {
   animation-delay: var(--reveal-delay, 0s);
 }
 
-/* En mobile acortamos distancia y duración: menos trabajo de compositor
-   por frame en procesadores más lentos. No usamos will-change acá porque
-   es una animación de una sola vez al cargar -- dejar la capa promovida
-   después de terminar solo gastaría memoria de GPU sin ningún beneficio. */
-@media (max-width: 640px) {
-  .animate-reveal {
-    --reveal-distance: 10px;
-    animation-duration: 0.35s;
-  }
-}
-
 /* Footer marquee — pure CSS infinite scroll, no JS required */
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -136,12 +125,21 @@ body {
   animation: marquee-scroll 55s linear infinite;
 }
 
-@media (prefers-reduced-motion: reduce) {
+/* En mobile (y para quien pide prefers-reduced-motion) apagamos del todo
+   la animación de entrada: nada de transform/opacity que calcular durante
+   la primera carga, el contenido aparece directamente en su posición
+   final. Combinado con content-visibility:auto en las secciones debajo
+   del video, esas secciones ni siquiera llegan a pintarse hasta que
+   están cerca del viewport. */
+@media (prefers-reduced-motion: reduce), (max-width: 640px) {
   .animate-reveal {
-    animation: none;
-    opacity: 1;
-    transform: none;
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .animate-marquee {
     animation: none;
   }

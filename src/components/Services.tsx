@@ -5,7 +5,7 @@ import Reveal from "@/components/Reveal";
 
 export default function Services() {
   return (
-    <section className="relative pt-0 pb-10 md:py-12">
+    <section className="relative pt-0 pb-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:auto_1100px]">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">

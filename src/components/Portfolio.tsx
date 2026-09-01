@@ -8,7 +8,7 @@ export default function Portfolio() {
   const featured = projects.slice(0, 3);
 
   return (
-    <section className="relative py-10 md:py-12">
+    <section className="relative py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:auto_1100px]">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">

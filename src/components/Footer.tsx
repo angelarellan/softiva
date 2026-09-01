@@ -31,7 +31,7 @@ const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-background/10 bg-foreground text-background">
+    <footer className="relative overflow-hidden border-t border-background/10 bg-foreground text-background [content-visibility:auto] [contain-intrinsic-size:auto_950px]">
       <FooterMarquee />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-16">
