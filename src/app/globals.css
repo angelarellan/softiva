@@ -105,6 +105,19 @@ body {
   animation: float-slower 16s ease-in-out infinite;
 }
 
+/* En mobile, un blur(120px) animado sobre 3 capas grandes de forma
+   continua desde el primer frame es caro de rasterizar en GPUs de gama
+   media/baja -- se congela la animación (el radio de blur ya se redujo
+   aparte, en las clases del Hero) para que el navegador solo pinte esas
+   capas una vez en vez de recalcularlas en cada frame durante toda la
+   visita a la Home. */
+@media (max-width: 640px) {
+  .animate-float-slow,
+  .animate-float-slower {
+    animation: none;
+  }
+}
+
 /* Scroll/entrance reveal — pure CSS so content is visible even if JS
    hasn't hydrated yet (no framer-motion opacity:0-until-hydration flash). */
 @keyframes reveal-up {

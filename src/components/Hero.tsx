@@ -7,9 +7,9 @@ export default function Hero() {
     <section className="relative flex items-center overflow-hidden pt-16 md:min-h-screen">
       {/* Aurora background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="animate-float-slow absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-accent-blue/25 blur-[120px]" />
-        <div className="animate-float-slower absolute top-1/3 right-1/4 h-96 w-96 rounded-full bg-accent-violet/25 blur-[120px]" />
-        <div className="animate-float-slow absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent-mint/20 blur-[110px]" />
+        <div className="animate-float-slow absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-accent-blue/25 blur-[60px] md:blur-[120px]" />
+        <div className="animate-float-slower absolute top-1/3 right-1/4 h-96 w-96 rounded-full bg-accent-violet/25 blur-[60px] md:blur-[120px]" />
+        <div className="animate-float-slow absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent-mint/20 blur-[55px] md:blur-[110px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-8 text-center md:py-24">
