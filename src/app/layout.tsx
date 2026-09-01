@@ -11,6 +11,7 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   preload: true,
+  fallback: ["system-ui", "arial"],
 });
 
 const TITLE = "Softiva Studio | Desarrollo Web & Diseño Digital";
@@ -59,8 +60,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="es" className={`${jakarta.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+    <html
+      lang="es"
+      className={`${jakarta.variable} h-full antialiased`}
+      style={{ backgroundColor: "#f7f8fb" }}
+    >
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground"
+        style={{ backgroundColor: "#f7f8fb" }}
+      >
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
