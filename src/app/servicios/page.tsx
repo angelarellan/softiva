@@ -162,7 +162,11 @@ export default function ServiciosPage() {
                               )}
                             </div>
 
-                            <p className="mt-3 min-h-[3.75rem] text-sm text-muted">
+                            <p
+                              className={`mt-3 text-sm text-muted ${
+                                slug === "marketing-performance" ? "min-h-[3.75rem]" : ""
+                              }`}
+                            >
                               {plan.summary}
                             </p>
 
