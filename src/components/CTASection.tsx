@@ -1,6 +1,8 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+
+const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
 
 export default function CTASection() {
   return (
@@ -19,8 +21,10 @@ export default function CTASection() {
                 Contanos tu idea y te ayudamos a convertirla en una experiencia
                 digital de alto nivel.
               </p>
-              <Link
-                href="/contacto"
+              <a
+                href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-glow group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
               >
                 Iniciar Proyecto
@@ -28,7 +32,7 @@ export default function CTASection() {
                   size={18}
                   className="transition-transform group-hover:translate-x-1"
                 />
-              </Link>
+              </a>
             </div>
           </div>
         </Reveal>

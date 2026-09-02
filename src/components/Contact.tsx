@@ -1,9 +1,13 @@
 "use client";
 
 import { useEffect, useState, FormEvent } from "react";
-import { CheckCircle2, Loader2, Mail, MapPin, Send } from "lucide-react";
+import { CheckCircle2, Loader2, Mail, Send } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import { WhatsAppIcon } from "@/components/SocialIcons";
 import { CONTACT_EMAIL } from "@/lib/site";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+
+const WHATSAPP_MESSAGE = "Hola Softiva Studio, quisiera hacer una consulta.";
 
 const SERVICES = [
   "Branding & Presencia Digital",
@@ -85,12 +89,17 @@ export default function Contact() {
                 {CONTACT_EMAIL}
               </a>
             </div>
-            <div className="flex items-center gap-3 text-sm text-muted">
+            <a
+              href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-foreground"
+            >
               <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface">
-                <MapPin size={18} className="text-accent-violet" />
+                <WhatsAppIcon size={18} className="text-accent-mint" />
               </span>
-              Atención personalizada para proyectos globales.
-            </div>
+              +54 3543635504
+            </a>
           </div>
         </Reveal>
 

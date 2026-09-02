@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import { buildWhatsAppLink } from "@/lib/whatsapp";
+
+const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
 
 const LINKS = [
   { href: "/", label: "Inicio" },
@@ -63,12 +66,14 @@ export default function Navbar() {
           })}
         </ul>
 
-        <Link
-          href="/contacto"
+        <a
+          href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+          target="_blank"
+          rel="noopener noreferrer"
           className="btn-glow hidden rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg md:inline-block"
         >
           Iniciar Proyecto
-        </Link>
+        </a>
 
         <button
           className="text-foreground md:hidden"
@@ -93,12 +98,14 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <Link
-                href="/contacto"
+              <a
+                href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-2 inline-block rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white"
               >
                 Iniciar Proyecto
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
