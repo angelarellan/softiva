@@ -166,7 +166,11 @@ export default function ServiciosPage() {
                               {plan.summary}
                             </p>
 
-                            <ul className="mt-6 space-y-3">
+                            <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-muted">
+                              ¿Qué incluye este plan?:
+                            </p>
+
+                            <ul className="mt-4 space-y-3">
                               {plan.features.map((feature) => (
                                 <li
                                   key={feature}
