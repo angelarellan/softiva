@@ -15,7 +15,7 @@ import { SITE_NAME, SITE_URL } from "@/lib/site";
 // de prueba.
 const IS_PRODUCTION = process.env.VERCEL_ENV === "production";
 
-const META_PIXEL_ID = "2566221503897965";
+const META_PIXEL_ID = "517991158551582";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
