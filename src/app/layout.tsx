@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import MetaPixelPageview from "@/components/MetaPixelPageview";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 // Igual que en robots.ts: solo el deployment de producción (dominio propio)
 // tiene VERCEL_ENV=production. Así los previews de rama/PR y los builds
-// locales no ensucian las métricas reales de GA4 con tráfico de prueba.
+// locales no ensucian las métricas reales de GA4/Meta Pixel con tráfico
+// de prueba.
 const IS_PRODUCTION = process.env.VERCEL_ENV === "production";
+
+const META_PIXEL_ID = "2566221503897965";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -96,6 +101,41 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        {IS_PRODUCTION && (
+          <>
+            {/*
+              strategy="afterInteractive": next/script lo carga después de
+              que la página se vuelve interactiva, no bloquea el parseo del
+              HTML ni retrasa el FCP/LCP -- mismo mecanismo que usa
+              @next/third-parties por debajo para GoogleAnalytics.
+            */}
+            <Script id="meta-pixel" strategy="afterInteractive">
+              {`
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${META_PIXEL_ID}');
+                fbq('track', 'PageView');
+              `}
+            </Script>
+            <noscript>
+              {/* eslint-disable-next-line @next/next/no-img-element -- píxel de tracking de terceros, no un asset local optimizable */}
+              <img
+                height="1"
+                width="1"
+                alt=""
+                style={{ display: "none" }}
+                src={`https://www.facebook.com/tr?id=${META_PIXEL_ID}&ev=PageView&noscript=1`}
+              />
+            </noscript>
+            <MetaPixelPageview />
+          </>
+        )}
       </body>
       {IS_PRODUCTION && <GoogleAnalytics gaId="G-SPC5W4N45F" />}
     </html>
