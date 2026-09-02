@@ -71,7 +71,7 @@ const PROCESS = [
     step: "02",
     title: "Diseño",
     description:
-      "Creamos wireframes y prototipos en Figma hasta llegar a una propuesta visual que te represente.",
+      "Creamos la estructura visual, prototipos e interfaz a medida hasta llegar a una propuesta clara y moderna que te represente.",
   },
   {
     step: "03",
@@ -93,7 +93,7 @@ export default function NosotrosPage() {
       <PageHeader
         title={
           <>
-            Una agencia que piensa en{" "}
+            Un estudio enfocado en{" "}
             <span className="gradient-text">resultados, no en plantillas</span>
           </>
         }

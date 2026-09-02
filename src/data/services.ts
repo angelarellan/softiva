@@ -54,19 +54,18 @@ export const serviceCategories: ServiceCategory[] = [
     title: "Desarrollo Web & Ecommerce",
     summary: "Sitios y tiendas online rápidas, responsive y listas para vender.",
     description:
-      "Sitios web y tiendas online a medida, optimizados para conversión, con hosting incluido y automatizaciones que responden por vos.",
+      "Sitios web y tiendas online a medida, optimizados para conversión y con hosting incluido.",
     plans: [
       {
         slug: "creacion-web-tiendas",
         title: "Creación Web & Tiendas Online",
         summary:
-          "Sitios web y tiendas Ecommerce optimizadas, con hosting y automatizaciones incluidas.",
+          "Sitios web y tiendas Ecommerce optimizadas, con hosting incluido.",
         badge: "Más elegido",
         features: [
           "Sitios web optimizados y 100% responsive",
           "Hosting y dominio incluido por 1 año",
           "Tiendas Ecommerce de hasta 100 productos",
-          "Automatización de respuestas en formularios y WhatsApp",
           "WhatsApp flotante integrado",
         ],
       },
@@ -105,7 +104,7 @@ export const serviceCategories: ServiceCategory[] = [
       },
       {
         slug: "combo-growth",
-        title: "Combo Agresivo Growth",
+        title: "Combo Growth",
         summary:
           "Estrategia omnicanal para maximizar conversiones al menor costo posible.",
         badge: "Máximo impacto",

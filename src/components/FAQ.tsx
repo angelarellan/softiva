@@ -14,7 +14,7 @@ const FAQS = [
   {
     question: "¿Cómo es el proceso de diseño?",
     answer:
-      "Empezamos con una etapa de descubrimiento para entender tu marca y objetivos, seguimos con wireframes y prototipos en Figma, y una vez aprobados pasamos al desarrollo.",
+      "Empezamos con una etapa de descubrimiento para entender tu marca y objetivos, seguimos con la propuesta visual y prototipos a medida, y una vez aprobados pasamos al desarrollo.",
   },
   {
     question: "¿Los sitios están optimizados para celular?",

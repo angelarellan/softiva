@@ -53,7 +53,7 @@ export default function ServiciosPage() {
         title={
           <>
             Todo lo que tu marca necesita para{" "}
-            <span className="gradient-text">destacar online</span>
+            <span className="gradient-text">escalar</span>
           </>
         }
         description="Desde la identidad de marca hasta la publicidad y la formación de tu equipo: un catálogo pensado para acompañar cada etapa de tu negocio."
@@ -162,7 +162,9 @@ export default function ServiciosPage() {
                               )}
                             </div>
 
-                            <p className="mt-3 text-sm text-muted">{plan.summary}</p>
+                            <p className="mt-3 min-h-[3.75rem] text-sm text-muted">
+                              {plan.summary}
+                            </p>
 
                             <ul className="mt-6 space-y-3">
                               {plan.features.map((feature) => (

@@ -14,7 +14,7 @@ export default function Services() {
             </span>
             <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
               Todo lo que tu marca necesita para{" "}
-              <span className="gradient-text">destacar online</span>
+              <span className="gradient-text">escalar</span>
             </h2>
           </div>
         </Reveal>
