@@ -72,7 +72,7 @@ export default function Navbar() {
           rel="noopener noreferrer"
           className="btn-glow hidden rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg md:inline-block"
         >
-          Iniciar Proyecto
+          Cotizar Proyecto
         </a>
 
         <button
@@ -104,7 +104,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 className="mt-2 inline-block rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white"
               >
-                Iniciar Proyecto
+                Cotizar Proyecto
               </a>
             </li>
           </ul>

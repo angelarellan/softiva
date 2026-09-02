@@ -27,7 +27,7 @@ export default function CTASection() {
                 rel="noopener noreferrer"
                 className="btn-glow group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
               >
-                Iniciar Proyecto
+                Hablemos de tu Proyecto
                 <ArrowRight
                   size={18}
                   className="transition-transform group-hover:translate-x-1"

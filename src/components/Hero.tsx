@@ -37,9 +37,9 @@ export default function Hero() {
               href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow group inline-flex w-64 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
+              className="btn-glow group inline-flex w-full max-w-72 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
             >
-              Iniciar Proyecto
+              Hablemos de tu Proyecto
               <ArrowRight
                 size={18}
                 className="transition-transform group-hover:translate-x-1"
@@ -47,7 +47,7 @@ export default function Hero() {
             </a>
             <Link
               href="/portafolio"
-              className="inline-flex w-64 items-center justify-center gap-2 rounded-full border border-border bg-surface/80 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-accent-violet/60 hover:bg-surface-2"
+              className="inline-flex w-full max-w-72 items-center justify-center gap-2 rounded-full border border-border bg-surface/80 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-accent-violet/60 hover:bg-surface-2"
             >
               Ver Portafolio
             </Link>
