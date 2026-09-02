@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // Default de Next.js 16 es solo webp; se suma avif (más liviano en
+    // pantallas mobile) como primera opción, con webp de fallback para
+    // navegadores que no soportan avif.
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

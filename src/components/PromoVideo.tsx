@@ -137,6 +137,7 @@ export default function PromoVideo() {
                 isFullscreen ? "object-contain" : "object-cover"
               }`}
               poster="/promo-poster.webp"
+              {...({ fetchpriority: "high" } as React.VideoHTMLAttributes<HTMLVideoElement>)}
               autoPlay
               loop
               muted={muted}
