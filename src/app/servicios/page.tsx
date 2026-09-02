@@ -167,7 +167,7 @@ export default function ServiciosPage() {
                             </p>
 
                             <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-muted">
-                              ¿Qué incluye este plan?:
+                              ¿Qué incluye este plan?
                             </p>
 
                             <ul className="mt-4 space-y-3">
