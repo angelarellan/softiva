@@ -21,6 +21,19 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        // Se aplica a toda ruta del sitio (páginas, API, assets).
+        source: "/(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+        ],
+      },
+      {
         // Assets propios de public/ (imágenes, video, favicons, fuentes):
         // son archivos con nombre fijo, no hasheado por build, así que un
         // cambio de contenido implica subir un archivo nuevo o cambiar el
