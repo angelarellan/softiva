@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+
+// Igual que en robots.ts: solo el deployment de producción (dominio propio)
+// tiene VERCEL_ENV=production. Así los previews de rama/PR y los builds
+// locales no ensucian las métricas reales de GA4 con tráfico de prueba.
+const IS_PRODUCTION = process.env.VERCEL_ENV === "production";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -88,6 +94,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <WhatsAppButton />
       </body>
+      {IS_PRODUCTION && <GoogleAnalytics gaId="G-SPC5W4N45F" />}
     </html>
   );
 }
