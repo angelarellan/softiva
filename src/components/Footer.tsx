@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { CONTACT_EMAIL } from "@/lib/site";
@@ -133,10 +133,6 @@ export default function Footer() {
                   <MessageCircle size={16} className="shrink-0 text-accent-mint" />
                   +54 3543635504
                 </a>
-              </li>
-              <li className="flex items-center justify-center gap-2 text-sm text-background/80 lg:justify-start">
-                <MapPin size={16} className="shrink-0 text-accent-blue" />
-                <span>Atención para proyectos globales</span>
               </li>
             </ul>
           </div>
