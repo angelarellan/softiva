@@ -129,13 +129,24 @@ body {
   animation-delay: var(--reveal-delay, 0s);
 }
 
-/* Footer marquee — pure CSS infinite scroll, no JS required */
+/* Footer marquee — pure CSS infinite scroll, no JS required. El
+   translateZ(0) va DENTRO del keyframe (no como transform estático en la
+   clase) porque una propiedad "transform" animada reemplaza el transform
+   completo en cada frame -- si el translateZ(0) quedara afuera, cada
+   frame del translateX lo pisaría y el elemento perdería la capa de GPU
+   que le da fluidez constante. will-change se deja permanente a
+   propósito acá (a diferencia de .animate-reveal, que es una animación
+   de una sola vez): este loop corre todo el tiempo que el marquee esté
+   montado, así que mantener la capa promovida es exactamente el uso
+   correcto de will-change, no un desperdicio de memoria. */
 @keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translateX(0) translateZ(0); }
+  to { transform: translateX(-50%) translateZ(0); }
 }
 .animate-marquee {
   animation: marquee-scroll 55s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* En mobile (y para quien pide prefers-reduced-motion) apagamos del todo
