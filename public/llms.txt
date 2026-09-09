@@ -1,0 +1,12 @@
+# Softiva Studio
+> Agencia especializada en desarrollo web de alto rendimiento, sistemas a medida, e-commerce y posicionamiento SEO.
+
+## Servicios Principales
+- Desarrollo Web & E-commerce: Sitios ultra rápidos construidos con Next.js y React.
+- SEO & Performance: Optimización de velocidad y posicionamiento orgánico en motores de búsqueda.
+- Marketing Digital & Performance Ads: Campañas publicitarias optimizadas en Meta Ads y Google Ads.
+
+## Contacto & Ubicación
+- Web: https://www.softivastudio.com
+- Ubicación: Córdoba, Argentina (Atención a proyectos globales)
+- Correo: contacto@softivastudio.com
