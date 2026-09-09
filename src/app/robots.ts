@@ -19,11 +19,27 @@ export default function robots(): MetadataRoute.Robots {
   }
 
   return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: "/api/",
-    },
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: "/api/",
+      },
+      // Permisos explícitos para crawlers de motores de IA (GEO/AEO):
+      // ya quedan cubiertos por la regla "*" de arriba, pero se listan
+      // aparte para que quede explícito y a prueba de que alguna de
+      // estas IAs cambie su comportamiento default frente a "*".
+      { userAgent: "GPTBot", allow: "/" },
+      { userAgent: "OAI-SearchBot", allow: "/" },
+      { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "ClaudeBot", allow: "/" },
+      { userAgent: "Claude-SearchBot", allow: "/" },
+      { userAgent: "Claude-User", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "PerplexityBot", allow: "/" },
+      { userAgent: "Perplexity-User", allow: "/" },
+      { userAgent: "Applebot-Extended", allow: "/" },
+    ],
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

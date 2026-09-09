@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MetaPixelPageview from "@/components/MetaPixelPageview";
+import OrganizationSchema from "@/components/OrganizationSchema";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 // Igual que en robots.ts: solo el deployment de producción (dominio propio)
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         className="min-h-full flex flex-col bg-background text-foreground"
         style={{ backgroundColor: "#f7f8fb" }}
       >
+        <OrganizationSchema />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
