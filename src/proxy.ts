@@ -15,13 +15,25 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
+  // Cualquier archivo estático real (robots.txt, sitemap.xml, sitemap.xsl,
+  // favicon.ico, imágenes, video, fuentes, etc.) tiene un punto en su
+  // último segmento -- a diferencia de una ruta de página real
+  // (/, /servicios, /contacto), que nunca lo tiene. Se excluye por esta
+  // regla general en vez de mantener una lista de extensiones a mano:
+  // ya se nos había escapado ".xsl" de esa lista una vez y rompió
+  // /sitemap.xsl con un 404 (se reescribía a /es/sitemap.xsl, que no
+  // existe).
+  if (/\.[^/]+$/.test(pathname)) {
+    return NextResponse.next();
+  }
+
   return NextResponse.rewrite(new URL(`/es${pathname}`, request.url));
 }
 
 export const config = {
   matcher: [
-    // Todo excepto _next, api, archivos estáticos/metadata y assets con
-    // extensión (imágenes, video, fuentes, etc.).
-    "/((?!_next|api|favicon.ico|icon.png|apple-icon.png|opengraph-image|robots.txt|sitemap.xml|llms.txt|.*\\.(?:png|jpg|jpeg|webp|avif|svg|ico|mp4|webm|woff2?)$).*)",
+    // Todo excepto _next y api -- el resto de la exclusión (archivos
+    // estáticos) se resuelve arriba, adentro de la función.
+    "/((?!_next|api).*)",
   ],
 };
