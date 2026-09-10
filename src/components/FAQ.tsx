@@ -4,41 +4,13 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import type { Dictionary } from "@/app/[lang]/dictionaries";
 
-const FAQS = [
-  {
-    question: "¿Cuánto tiempo tarda un proyecto?",
-    answer:
-      "Depende de la complejidad: una landing page suele estar lista en 1 a 2 semanas, mientras que un sitio corporativo o e-commerce puede llevar entre 3 y 6 semanas.",
-  },
-  {
-    question: "¿Cómo es el proceso de diseño?",
-    answer:
-      "Empezamos con una etapa de descubrimiento para entender tu marca y objetivos, seguimos con la propuesta visual y prototipos a medida, y una vez aprobados pasamos al desarrollo.",
-  },
-  {
-    question: "¿Los sitios están optimizados para celular?",
-    answer:
-      "Sí, todos nuestros desarrollos son responsive por defecto: se adaptan y funcionan perfectamente en celulares, tablets y notebooks.",
-  },
-  {
-    question: "¿Puedo solicitar un plan personalizado que combine Web y Marketing Digital?",
-    answer:
-      "Sí, diseñamos estrategias a medida según la etapa de tu negocio. Podés combinar desarrollo web con campañas activas en Meta o Google Ads.",
-  },
-  {
-    question: "¿Qué necesito para empezar a correr campañas de Meta o Google Ads?",
-    answer:
-      "Solo necesitamos acceso a tus cuentas comerciales (o te ayudamos a crearlas desde cero). Nosotros nos encargamos de la configuración técnica del Pixel, GA4, la segmentación y el diseño de los anuncios.",
-  },
-  {
-    question: "¿El sitio web incluye soporte y mantenimiento posterior al lanzamiento?",
-    answer:
-      "Todos nuestros desarrollos incluyen garantía de funcionamiento inicial, optimización SEO y te ofrecemos planes opcionales de mantenimiento mensual para actualizar contenidos y mantener la web segura.",
-  },
-];
+type FAQProps = {
+  dict: Dictionary["faq"];
+};
 
-export default function FAQ() {
+export default function FAQ({ dict }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -46,16 +18,15 @@ export default function FAQ() {
       <div className="mx-auto max-w-3xl px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-lg font-semibold uppercase tracking-widest text-accent-violet">
-            Preguntas frecuentes
+            {dict.eyebrow}
           </span>
           <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
-            Resolvemos tus{" "}
-            <span className="gradient-text">principales dudas</span>
+            {dict.titlePre} <span className="gradient-text">{dict.titleHighlight}</span>
           </h2>
         </Reveal>
 
         <div className="mt-12 space-y-4">
-          {FAQS.map((item, index) => {
+          {dict.items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <Reveal key={item.question} delay={index * 0.05}>

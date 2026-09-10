@@ -2,10 +2,14 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { localeHref } from "@/lib/i18n";
+import { getDictionary, getLocale } from "@/app/[lang]/dictionaries";
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
+export default async function Hero() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const { titlePre, titleHighlight, subtitle, ctaPrimary, ctaSecondary } = dict.home.hero;
 
-export default function Hero() {
   return (
     <section className="relative flex items-center overflow-hidden pt-16 md:min-h-screen">
       {/* Aurora background */}
@@ -18,38 +22,33 @@ export default function Hero() {
       <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-8 text-center md:py-24">
         <Reveal>
           <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-balance sm:text-6xl lg:text-7xl">
-            Transformamos ideas en{" "}
-            <span className="gradient-text">experiencias digitales</span>
+            {titlePre} <span className="gradient-text">{titleHighlight}</span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">
-            En Softiva Studio creamos páginas web y diseños de alto nivel: rápidos,
-            modernos y pensados para convertir. Llevamos tu marca al siguiente
-            nivel con tecnología y diseño de punta.
-          </p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted sm:text-xl">{subtitle}</p>
         </Reveal>
 
         <Reveal delay={0.2}>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+              href={buildWhatsAppLink(dict.whatsapp.ctaMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-glow group inline-flex w-full max-w-72 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
             >
-              Hablemos de tu Proyecto
+              {ctaPrimary}
               <ArrowRight
                 size={18}
                 className="transition-transform group-hover:translate-x-1"
               />
             </a>
             <Link
-              href="/portafolio"
+              href={localeHref(locale, "/portafolio")}
               className="inline-flex w-full max-w-72 items-center justify-center gap-2 rounded-full border border-border bg-surface/80 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-accent-violet/60 hover:bg-surface-2"
             >
-              Ver Portafolio
+              {ctaSecondary}
             </Link>
           </div>
         </Reveal>

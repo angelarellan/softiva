@@ -3,44 +3,50 @@ import Image from "next/image";
 import PageHeader from "@/components/PageHeader";
 import CTASection from "@/components/CTASection";
 import Reveal from "@/components/Reveal";
-import { projects } from "@/data/projects";
-import { SITE_NAME } from "@/lib/site";
+import { projectsByLocale } from "@/data/projects";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { buildAlternates } from "@/lib/i18n";
+import { getDictionary, getLocale } from "../dictionaries";
 
 // Página 100% estática (SSG): sin headers()/cookies() ni fetch sin
 // cache en el render, se pre-renderiza en build time.
 export const dynamic = "force-static";
 export const revalidate = false;
 
-const PAGE_TITLE = "Portafolio";
-const TITLE = "Portafolio | Softiva Studio";
-const DESCRIPTION =
-  "Proyectos de desarrollo web, e-commerce, dashboards y branding realizados por Softiva Studio.";
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const { pageTitle, metaTitle, metaDescription } = dict.portfolioPage;
+  const alternates = buildAlternates(locale, "/portafolio", SITE_URL);
 
-export const metadata: Metadata = {
-  title: PAGE_TITLE,
-  description: DESCRIPTION,
-  alternates: {
-    canonical: "/portafolio",
-  },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    type: "website",
-    siteName: SITE_NAME,
-  },
-};
+  return {
+    title: pageTitle,
+    description: metaDescription,
+    alternates,
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      type: "website",
+      siteName: SITE_NAME,
+    },
+  };
+}
 
-export default function PortafolioPage() {
+export default async function PortafolioPage() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const projects = projectsByLocale[locale];
+
   return (
     <>
       <PageHeader
         title={
           <>
-            Proyectos que{" "}
-            <span className="gradient-text">hablan por sí solos</span>
+            {dict.portfolioPage.headerTitlePre}{" "}
+            <span className="gradient-text">{dict.portfolioPage.headerTitleHighlight}</span>
           </>
         }
-        description="Una selección de proyectos que muestran el estilo y la calidad con la que encaramos cada trabajo."
+        description={dict.portfolioPage.headerDescription}
       />
 
       <section className="pb-10 md:pb-12">

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import "./globals.css";
+import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import MetaPixelPageview from "@/components/MetaPixelPageview";
 import OrganizationSchema from "@/components/OrganizationSchema";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { LOCALES, buildAlternates } from "@/lib/i18n";
+import { getDictionary, getLocale } from "./dictionaries";
 
 // Igual que en robots.ts: solo el deployment de producción (dominio propio)
 // tiene VERCEL_ENV=production. Así los previews de rama/PR y los builds
@@ -26,60 +28,81 @@ const jakarta = Plus_Jakarta_Sans({
   fallback: ["system-ui", "arial"],
 });
 
-const TITLE = "Softiva Studio | Desarrollo Web & Diseño Digital";
-const DESCRIPTION =
-  "Softiva Studio - Agencia de desarrollo web, e-commerce y software a medida. Transformamos ideas en experiencias digitales de alto nivel.";
+// Ambos idiomas se generan 100% estáticos en build time (SSG real, no
+// negociación de idioma en runtime): el español sigue en las URLs de
+// siempre (sin prefijo, vía el rewrite de proxy.ts) y el inglés en /en/...
+export async function generateStaticParams() {
+  return LOCALES.map((lang) => ({ lang }));
+}
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: TITLE,
-    template: `%s | ${SITE_NAME}`,
-  },
-  description: DESCRIPTION,
-  alternates: {
-    canonical: "/",
-  },
-  keywords: [
-    "desarrollo web",
-    "diseño web",
-    "e-commerce",
-    "marketing digital",
-    "landing pages",
-    "agencia digital",
-  ],
-  authors: [{ name: SITE_NAME }],
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    url: SITE_URL,
-    siteName: SITE_NAME,
-    locale: "es_AR",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  verification: {
-    google: "t1Az1BV9Q_v1Q_P06ferjUbI9yuxxegtl25Cmbui0s4",
-  },
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/favicon.ico",
-    apple: "/apple-icon.png",
-  },
+const TITLES: Record<string, string> = {
+  es: "Softiva Studio | Desarrollo Web & Diseño Digital",
+  en: "Softiva Studio | Web Development & Digital Design",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+const DESCRIPTIONS: Record<string, string> = {
+  es: "Softiva Studio - Agencia de desarrollo web, e-commerce y software a medida. Transformamos ideas en experiencias digitales de alto nivel.",
+  en: "Softiva Studio - Web development, e-commerce, and custom software agency. We turn ideas into high-end digital experiences.",
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const title = TITLES[locale];
+  const description = DESCRIPTIONS[locale];
+  const alternates = buildAlternates(locale, "/", SITE_URL);
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: title,
+      template: `%s | ${SITE_NAME}`,
+    },
+    description,
+    alternates,
+    keywords: [
+      "desarrollo web",
+      "diseño web",
+      "e-commerce",
+      "marketing digital",
+      "landing pages",
+      "agencia digital",
+    ],
+    authors: [{ name: SITE_NAME }],
+    openGraph: {
+      title,
+      description,
+      url: alternates.canonical,
+      siteName: SITE_NAME,
+      locale: locale === "es" ? "es_AR" : "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    verification: {
+      google: "t1Az1BV9Q_v1Q_P06ferjUbI9yuxxegtl25Cmbui0s4",
+    },
+    icons: {
+      icon: "/icon.png",
+      shortcut: "/favicon.ico",
+      apple: "/apple-icon.png",
+    },
+  };
+}
+
+export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+
   return (
     <html
-      lang="es"
+      lang={locale}
       className={`${jakarta.variable} h-full antialiased`}
       style={{ backgroundColor: "#f7f8fb" }}
     >
@@ -99,7 +122,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         style={{ backgroundColor: "#f7f8fb" }}
       >
         <OrganizationSchema />
-        <Navbar />
+        <Navbar locale={locale} dict={dict.nav} whatsappMessage={dict.whatsapp.ctaMessage} />
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />

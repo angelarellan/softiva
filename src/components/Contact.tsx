@@ -1,36 +1,38 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useEffect, useState, FormEvent } from "react";
 import { CheckCircle2, Loader2, Mail, Send } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/SocialIcons";
 import { CONTACT_EMAIL } from "@/lib/site";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import type { Dictionary } from "@/app/[lang]/dictionaries";
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quisiera hacer una consulta.";
-
-const SERVICES = [
-  "Branding & Presencia Digital",
-  "Desarrollo Web & Ecommerce",
-  "Marketing Digital & Ads (Meta/Google)",
-  "Contenido & Redes Sociales",
-  "Formación & Capacitación",
-  "Otro",
-];
+type ContactProps = {
+  dict: Dictionary["contactForm"];
+  whatsappMessage: string;
+};
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function Contact() {
+export default function Contact({ dict, whatsappMessage }: ContactProps) {
   const [status, setStatus] = useState<Status>("idle");
-  // Lazy initializer en vez de useEffect: la página es SSG (esta parte se
-  // sigue prerenderizando en build time aunque el componente sea "use
-  // client"), así que se guarda contra `window` indefinido durante ese
-  // paso -- en el cliente ya corre normalmente con el ?plan= real de la URL.
-  const [message, setMessage] = useState(() => {
-    if (typeof window === "undefined") return "";
+  // Arranca siempre en "" -- igual en el HTML pre-renderado (SSG) y en el
+  // primer render del cliente -- para no arriesgar un hydration mismatch
+  // en el <textarea>. Un lazy initializer que lea `window` acá se ve
+  // "más directo" pero rompe justamente eso: el servidor jamás ve un
+  // ?plan= real, así que si alguien entra con esa query el cliente
+  // calcularía un valor distinto al que ya vino en el HTML.
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
     const plan = new URLSearchParams(window.location.search).get("plan");
-    return plan ? `Quiero cotizar el plan "${plan}".` : "";
-  });
+    if (!plan) return;
+    // Depende de window.location: no hay forma de calcularlo antes de
+    // montar sin repetir el mismatch de arriba.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMessage(dict.planMessage.replace("{plan}", plan));
+  }, [dict.planMessage]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -71,12 +73,9 @@ export default function Contact() {
       <div className="relative mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-2">
         <Reveal>
           <h2 className="text-2xl font-bold leading-tight tracking-tight text-balance">
-            Nuestros datos de contacto
+            {dict.title}
           </h2>
-          <p className="mt-4 max-w-md text-muted">
-            Contanos qué necesitás y te respondemos a la brevedad con una
-            propuesta a medida para tu marca o negocio.
-          </p>
+          <p className="mt-4 max-w-md text-muted">{dict.subtitle}</p>
 
           <div className="mt-10 space-y-4">
             <div className="flex items-center gap-3 text-sm text-muted">
@@ -91,7 +90,7 @@ export default function Contact() {
               </a>
             </div>
             <a
-              href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+              href={buildWhatsAppLink(whatsappMessage)}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 text-sm text-muted transition-colors hover:text-foreground"
@@ -112,42 +111,42 @@ export default function Contact() {
           <div className="grid gap-5">
             <div>
               <label htmlFor="name" className="text-sm font-medium">
-                Nombre
+                {dict.nameLabel}
               </label>
               <input
                 id="name"
                 name="name"
                 type="text"
                 required
-                placeholder="Tu nombre completo"
-                className="mt-2 w-full rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
+                placeholder={dict.namePlaceholder}
+                className="mt-2 w-full rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet focus-visible:ring-2 focus-visible:ring-accent-violet/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               />
             </div>
 
             <div>
               <label htmlFor="email" className="text-sm font-medium">
-                Email
+                {dict.emailLabel}
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 required
-                placeholder="tu@email.com"
-                className="mt-2 w-full rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
+                placeholder={dict.emailPlaceholder}
+                className="mt-2 w-full rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet focus-visible:ring-2 focus-visible:ring-accent-violet/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               />
             </div>
 
             <div>
               <label htmlFor="service" className="text-sm font-medium">
-                Servicio de interés
+                {dict.serviceLabel}
               </label>
               <select
                 id="service"
                 name="service"
-                className="mt-2 w-full rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
+                className="mt-2 w-full rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet focus-visible:ring-2 focus-visible:ring-accent-violet/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               >
-                {SERVICES.map((s) => (
+                {dict.services.map((s) => (
                   <option key={s} value={s}>
                     {s}
                   </option>
@@ -157,7 +156,7 @@ export default function Contact() {
 
             <div>
               <label htmlFor="message" className="text-sm font-medium">
-                Mensaje
+                {dict.messageLabel}
               </label>
               <textarea
                 id="message"
@@ -166,8 +165,8 @@ export default function Contact() {
                 rows={4}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Contanos sobre tu proyecto..."
-                className="mt-2 w-full resize-none rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet"
+                placeholder={dict.messagePlaceholder}
+                className="mt-2 w-full resize-none rounded-lg border border-border bg-surface-2 px-4 py-3 text-sm outline-none transition-colors focus:border-accent-violet focus-visible:ring-2 focus-visible:ring-accent-violet/50 focus-visible:ring-offset-2 focus-visible:ring-offset-surface"
               />
             </div>
 
@@ -179,11 +178,11 @@ export default function Contact() {
               {status === "loading" ? (
                 <>
                   <Loader2 size={16} className="animate-spin" />
-                  Enviando...
+                  {dict.submitting}
                 </>
               ) : (
                 <>
-                  Enviar Mensaje
+                  {dict.submit}
                   <Send size={16} />
                 </>
               )}
@@ -192,14 +191,10 @@ export default function Contact() {
             {status === "success" && (
               <p className="flex items-center gap-2 text-sm text-emerald-400">
                 <CheckCircle2 size={16} />
-                ¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.
+                {dict.success}
               </p>
             )}
-            {status === "error" && (
-              <p className="text-sm text-red-400">
-                Ocurrió un error al enviar. Intentá nuevamente.
-              </p>
-            )}
+            {status === "error" && <p className="text-sm text-red-400">{dict.error}</p>}
           </div>
         </form>
         </Reveal>

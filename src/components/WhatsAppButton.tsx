@@ -1,17 +1,17 @@
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quisiera hacer una consulta.";
-
-export default function WhatsAppButton() {
-  const href = buildWhatsAppLink(WHATSAPP_MESSAGE);
+export default async function WhatsAppButton() {
+  const dict = await getDictionary();
+  const href = buildWhatsAppLink(dict.whatsapp.floatMessage);
 
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Chatear por WhatsApp"
-      className="group fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-black/20 transition-transform hover:scale-110"
+      aria-label={dict.whatsapp.chatAriaLabel}
+      className="group fixed bottom-6 right-6 z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-lg shadow-black/20 transition-transform hover:scale-110"
     >
       <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#25D366] opacity-40" />
       <svg

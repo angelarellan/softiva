@@ -1,3 +1,5 @@
+import type { Locale } from "@/lib/i18n";
+
 export type Project = {
   slug: string;
   title: string;
@@ -10,7 +12,7 @@ export type Project = {
   tags: string[];
 };
 
-export const projects: Project[] = [
+const es: Project[] = [
   {
     slug: "nebula-store",
     title: "Nébula Store",
@@ -72,3 +74,68 @@ export const projects: Project[] = [
     tags: ["Corporativo", "SEO Local"],
   },
 ];
+
+const en: Project[] = [
+  {
+    slug: "nebula-store",
+    title: "Nébula Store",
+    category: "E-commerce · Shopify",
+    image:
+      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "An online clothing store with an optimized checkout and a smooth mobile shopping experience, reducing cart abandonment.",
+    tags: ["Shopify", "E-commerce", "UI/UX"],
+  },
+  {
+    slug: "vertice-studio",
+    title: "Vértice Studio",
+    category: "Landing Page · Branding",
+    image: "/vertice-studio.webp",
+    alt: "Vértice Studio - Landing page design and development",
+    description:
+      "A landing page and complete visual identity for a creative studio, with subtle animations that reinforce its value proposition.",
+    tags: ["Branding", "Landing Page", "Next.js"],
+  },
+  {
+    slug: "aurea-finance",
+    title: "Aurea Finance",
+    category: "Web App · Dashboard",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "A financial dashboard with real-time data visualization, built for non-technical teams to make fast decisions.",
+    tags: ["Web App", "Dashboard", "Data Viz"],
+  },
+  {
+    slug: "lumen-real-estate",
+    title: "Lumen Real Estate",
+    category: "Corporate Website",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "A corporate website for a real estate agency, with a filterable property search and contact forms integrated into its CRM.",
+    tags: ["Corporate", "SEO", "CRM"],
+  },
+  {
+    slug: "orbita-fitness",
+    title: "Órbita Fitness",
+    category: "Landing Page · UI/UX",
+    image:
+      "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "A high-conversion landing page for a training studio, with a class booking form and video testimonials.",
+    tags: ["Landing Page", "UI/UX", "Conversion"],
+  },
+  {
+    slug: "prisma-legal",
+    title: "Prisma Legal",
+    category: "Corporate Website · SEO",
+    image:
+      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    description:
+      "An institutional website for a law firm, optimized for local SEO with a content structure designed to capture inquiries.",
+    tags: ["Corporate", "Local SEO"],
+  },
+];
+
+export const projectsByLocale: Record<Locale, Project[]> = { es, en };

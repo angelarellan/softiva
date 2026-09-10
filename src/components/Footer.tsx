@@ -3,33 +3,37 @@ import { Mail, MessageCircle } from "lucide-react";
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
 import { CONTACT_EMAIL } from "@/lib/site";
+import { localeHref } from "@/lib/i18n";
 import FooterMarquee from "@/components/FooterMarquee";
 import ScrollTopLink from "@/components/ScrollTopLink";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { getDictionary, getLocale } from "@/app/[lang]/dictionaries";
 
 const SOCIALS = [
   { label: "Instagram", href: "https://www.instagram.com/softivastudio/", Icon: InstagramIcon },
   { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61594213251129", Icon: FacebookIcon },
 ];
 
-const SERVICE_LINKS = [
-  { label: "Branding & Presencia Digital", href: "/servicios#branding" },
-  { label: "Desarrollo Web & Ecommerce", href: "/servicios#desarrollo-web-ecommerce" },
-  { label: "Marketing Digital & Ads", href: "/servicios#marketing-performance" },
-  { label: "Contenido & Redes Sociales", href: "/servicios#contenido-redes" },
-  { label: "Formación & Capacitación", href: "/servicios#formacion" },
-];
+export default async function Footer() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
 
-const NAV_LINKS = [
-  { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Portafolio", href: "/portafolio" },
-  { label: "Nosotros", href: "/nosotros" },
-  { label: "Contacto", href: "/contacto" },
-];
+  const serviceLinks = [
+    { label: dict.footer.serviceLinks.branding, href: "/servicios#branding" },
+    { label: dict.footer.serviceLinks.desarrolloWeb, href: "/servicios#desarrollo-web-ecommerce" },
+    { label: dict.footer.serviceLinks.marketing, href: "/servicios#marketing-performance" },
+    { label: dict.footer.serviceLinks.contenido, href: "/servicios#contenido-redes" },
+    { label: dict.footer.serviceLinks.formacion, href: "/servicios#formacion" },
+  ];
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
+  const navLinks = [
+    { label: dict.nav.inicio, href: "/" },
+    { label: dict.nav.servicios, href: "/servicios" },
+    { label: dict.nav.portafolio, href: "/portafolio" },
+    { label: dict.nav.nosotros, href: "/nosotros" },
+    { label: dict.nav.contacto, href: "/contacto" },
+  ];
 
-export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-background/10 bg-foreground text-background">
       <FooterMarquee />
@@ -38,14 +42,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-y-12 text-center lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:gap-x-8 lg:text-left">
           <div>
             <ScrollTopLink
-              href="/"
+              href={localeHref(locale, "/")}
               className="text-xl font-bold tracking-tight text-background"
             >
               Softiva <span className="gradient-text">Studio</span>
             </ScrollTopLink>
             <p className="mx-auto mt-4 max-w-xs text-sm text-background/80 lg:mx-0">
-              Desarrollo web y diseño digital de alto nivel para marcas que
-              quieren destacar.
+              {dict.footer.tagline}
             </p>
 
             <div className="mt-6 flex items-center justify-center gap-3 lg:justify-start">
@@ -61,18 +64,24 @@ export default function Footer() {
                   <Icon size={16} />
                 </a>
               ))}
+              <LanguageSwitcher
+                currentLocale={locale}
+                ariaLabel={dict.nav.seleccionarIdioma}
+                ariaLabelOptions={dict.nav.idiomasDisponibles}
+                variant="circle"
+              />
             </div>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-background/50">
-              Servicios
+              {dict.footer.serviciosTitle}
             </h3>
             <ul className="mt-4 space-y-2 sm:space-y-3">
-              {SERVICE_LINKS.map((link) => (
+              {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={localeHref(locale, link.href)}
                     className="text-sm text-background/75 transition-colors hover:text-background"
                   >
                     {link.label}
@@ -84,21 +93,21 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-background/50">
-              Navegación
+              {dict.footer.navegacionTitle}
             </h3>
             <ul className="mt-4 space-y-2 sm:space-y-3">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <li key={link.href}>
                   {link.href === "/" ? (
                     <ScrollTopLink
-                      href={link.href}
+                      href={localeHref(locale, link.href)}
                       className="text-sm text-background/75 transition-colors hover:text-background"
                     >
                       {link.label}
                     </ScrollTopLink>
                   ) : (
                     <Link
-                      href={link.href}
+                      href={localeHref(locale, link.href)}
                       className="text-sm text-background/75 transition-colors hover:text-background"
                     >
                       {link.label}
@@ -111,7 +120,7 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-background/50">
-              Contacto
+              {dict.footer.contactoTitle}
             </h3>
             <ul className="mt-4 space-y-2 sm:space-y-3">
               <li>
@@ -125,7 +134,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+                  href={buildWhatsAppLink(dict.whatsapp.ctaMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 text-sm text-background/80 transition-colors hover:text-background lg:justify-start"
@@ -140,7 +149,7 @@ export default function Footer() {
 
         <div className="mt-14 border-t border-background/10 pt-8 text-center">
           <p className="text-sm text-background/60">
-            © {new Date().getFullYear()} Softiva Studio. Todos los derechos reservados.
+            © {new Date().getFullYear()} Softiva Studio. {dict.footer.rights}
           </p>
         </div>
       </div>

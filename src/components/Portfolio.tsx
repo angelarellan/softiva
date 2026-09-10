@@ -1,11 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { projects } from "@/data/projects";
+import { projectsByLocale } from "@/data/projects";
+import { localeHref } from "@/lib/i18n";
 import Reveal from "@/components/Reveal";
+import { getDictionary, getLocale } from "@/app/[lang]/dictionaries";
 
-export default function Portfolio() {
-  const featured = projects.slice(0, 3);
+export default async function Portfolio() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const featured = projectsByLocale[locale].slice(0, 3);
+  const { eyebrow, titlePre, titleHighlight, verProyecto, verCompleto } =
+    dict.home.portfolioSection;
 
   return (
     <section className="relative py-10 md:py-12 [content-visibility:auto] [contain-intrinsic-size:auto_1100px]">
@@ -13,10 +19,10 @@ export default function Portfolio() {
         <Reveal>
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-semibold uppercase tracking-widest text-accent-violet">
-              Portafolio
+              {eyebrow}
             </span>
             <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
-              Proyectos que <span className="gradient-text">hablan por sí solos</span>
+              {titlePre} <span className="gradient-text">{titleHighlight}</span>
             </h2>
           </div>
         </Reveal>
@@ -25,7 +31,7 @@ export default function Portfolio() {
           {featured.map((project, index) => (
             <Reveal key={project.slug} delay={index * 0.1}>
               <Link
-                href="/portafolio"
+                href={localeHref(locale, "/portafolio")}
                 className="group relative block aspect-[4/3] overflow-hidden rounded-2xl border border-border shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
               >
                 <Image
@@ -40,7 +46,7 @@ export default function Portfolio() {
                 <div className="relative flex h-full flex-col justify-end p-6">
                   <div className="translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                     <span className="inline-flex items-center gap-1 rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white backdrop-blur">
-                      Ver proyecto <ExternalLink size={12} />
+                      {verProyecto} <ExternalLink size={12} />
                     </span>
                   </div>
                   <h3 className="mt-3 text-xl font-semibold text-white">
@@ -55,10 +61,10 @@ export default function Portfolio() {
 
         <div className="mt-12 text-center">
           <Link
-            href="/portafolio"
+            href={localeHref(locale, "/portafolio")}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-sm font-semibold shadow-sm transition-colors hover:border-accent-violet/60 hover:bg-surface-2"
           >
-            Ver portafolio completo
+            {verCompleto}
             <ArrowRight size={16} />
           </Link>
         </div>

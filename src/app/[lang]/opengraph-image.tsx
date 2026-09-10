@@ -1,8 +1,16 @@
 import { ImageResponse } from "next/og";
+import { LOCALES } from "@/lib/i18n";
 
 export const alt = "Softiva Studio — Agencia de Desarrollo Web y Diseño UI/UX";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Sin esto, next build no sabe para qué valores de [lang] pre-renderizar
+// esta imagen (a diferencia de las páginas, que heredan los params del
+// layout) y la genera on-demand en cada request.
+export async function generateStaticParams() {
+  return LOCALES.map((lang) => ({ lang }));
+}
 
 export default async function OpengraphImage() {
   return new ImageResponse(

@@ -10,12 +10,16 @@ const CONTROL_BUTTON_CLASS =
 export default function PromoVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  // El fallback para navegadores sin IntersectionObserver se resuelve en
-  // el lazy initializer (se ejecuta durante el render) en vez de con un
-  // setState dentro del efecto de abajo.
-  const [shouldLoad, setShouldLoad] = useState(
-    () => typeof IntersectionObserver === "undefined"
-  );
+  // OJO: el valor inicial de este estado tiene que ser IDÉNTICO en el
+  // primer render del servidor y el primer render del cliente, o React
+  // tira "Hydration failed" en el <video>/<source> de abajo (pasó antes:
+  // un lazy initializer que chequeaba typeof IntersectionObserver daba
+  // `true` en el servidor -- Node no tiene ese global -- y `false` en
+  // cualquier navegador real, o sea un mismatch garantizado). Por eso
+  // arranca siempre en `false` acá (calculado en build/SSR igual que en
+  // el cliente) y el fallback para navegadores sin IntersectionObserver
+  // se resuelve recién en el efecto de abajo, después de hidratar.
+  const [shouldLoad, setShouldLoad] = useState(false);
   const [muted, setMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -28,6 +32,16 @@ export default function PromoVideo() {
     if (shouldLoad) return;
     const node = containerRef.current;
     if (!node) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      // Este setState-en-efecto es intencional (no un descuido que el
+      // lint pueda reemplazar por un lazy initializer): recién acá, ya
+      // hidratado, es seguro leer un global que no existe en el
+      // servidor sin arriesgar otro mismatch de hidratación.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setShouldLoad(true);
+      return;
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

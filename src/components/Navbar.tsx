@@ -4,22 +4,29 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { localeHref, type Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/app/[lang]/dictionaries";
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
+type NavbarProps = {
+  locale: Locale;
+  dict: Dictionary["nav"];
+  whatsappMessage: string;
+};
 
-const LINKS = [
-  { href: "/", label: "Inicio" },
-  { href: "/servicios", label: "Servicios" },
-  { href: "/portafolio", label: "Portafolio" },
-  { href: "/nosotros", label: "Nosotros" },
-  { href: "/contacto", label: "Contacto" },
-];
-
-export default function Navbar() {
+export default function Navbar({ locale, dict, whatsappMessage }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+
+  const links = [
+    { href: localeHref(locale, "/"), path: "/", label: dict.inicio },
+    { href: localeHref(locale, "/servicios"), path: "/servicios", label: dict.servicios },
+    { href: localeHref(locale, "/portafolio"), path: "/portafolio", label: dict.portafolio },
+    { href: localeHref(locale, "/nosotros"), path: "/nosotros", label: dict.nosotros },
+    { href: localeHref(locale, "/contacto"), path: "/contacto", label: dict.contacto },
+  ];
 
   // Cierra el menú mobile al cambiar de ruta. Se ajusta durante el render
   // (patrón "Adjusting state when a prop changes" de React) en vez de con
@@ -47,18 +54,16 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-        <Link href="/" className="text-xl font-bold tracking-tight">
+        <Link href={localeHref(locale, "/")} className="text-xl font-bold tracking-tight">
           Softiva <span className="gradient-text">Studio</span>
         </Link>
 
         <ul className="hidden items-center gap-8 md:flex">
-          {LINKS.map((link) => {
+          {links.map((link) => {
             const active =
-              link.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(link.href);
+              link.path === "/" ? pathname === link.href : pathname.startsWith(link.href);
             return (
-              <li key={link.href}>
+              <li key={link.path}>
                 <Link
                   href={link.href}
                   className={`text-sm transition-colors hover:text-foreground ${
@@ -72,18 +77,27 @@ export default function Navbar() {
           })}
         </ul>
 
-        <a
-          href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn-glow hidden rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg md:inline-block"
-        >
-          Cotizar Proyecto
-        </a>
+        <div className="hidden items-center gap-3 md:flex">
+          <LanguageSwitcher
+            currentLocale={locale}
+            ariaLabel={dict.seleccionarIdioma}
+            ariaLabelOptions={dict.idiomasDisponibles}
+          />
+          <a
+            href={buildWhatsAppLink(whatsappMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-glow rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
+          >
+            {dict.cotizar}
+          </a>
+        </div>
 
         <button
           className="text-foreground md:hidden"
-          aria-label="Abrir menú"
+          aria-label={open ? dict.cerrarMenu : dict.abrirMenu}
+          aria-expanded={open}
+          aria-controls="mobile-nav-menu"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -91,10 +105,13 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-lg md:hidden">
+        <div
+          id="mobile-nav-menu"
+          className="border-t border-border bg-background/95 px-6 py-4 backdrop-blur-lg md:hidden"
+        >
           <ul className="flex flex-col gap-4">
-            {LINKS.map((link) => (
-              <li key={link.href}>
+            {links.map((link) => (
+              <li key={link.path}>
                 <Link
                   href={link.href}
                   className="block text-sm text-muted transition-colors hover:text-foreground"
@@ -103,14 +120,22 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            <li className="mt-2">
+              <LanguageSwitcher
+                currentLocale={locale}
+                ariaLabel={dict.seleccionarIdioma}
+                ariaLabelOptions={dict.idiomasDisponibles}
+                variant="inline"
+              />
+            </li>
             <li>
               <a
-                href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+                href={buildWhatsAppLink(whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-2 inline-block rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-5 py-2 text-sm font-semibold text-white"
               >
-                Cotizar Proyecto
+                {dict.cotizar}
               </a>
             </li>
           </ul>

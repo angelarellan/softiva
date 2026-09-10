@@ -4,33 +4,35 @@ import PageHeader from "@/components/PageHeader";
 import CTASection from "@/components/CTASection";
 import FAQ from "@/components/FAQ";
 import Reveal from "@/components/Reveal";
-import { serviceCategories } from "@/data/services";
-import { SITE_NAME } from "@/lib/site";
+import { serviceCategoriesByLocale } from "@/data/services";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { buildAlternates } from "@/lib/i18n";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { getDictionary, getLocale } from "../dictionaries";
 
 // Página 100% estática (SSG): sin headers()/cookies() ni fetch sin
 // cache en el render, se pre-renderiza en build time.
 export const dynamic = "force-static";
 export const revalidate = false;
 
-const PAGE_TITLE = "Servicios";
-const TITLE = "Servicios | Softiva Studio";
-const DESCRIPTION =
-  "Branding, desarrollo web, marketing digital, contenido y formación: el catálogo completo de servicios de Softiva Studio.";
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const { pageTitle, metaTitle, metaDescription } = dict.servicesPage;
+  const alternates = buildAlternates(locale, "/servicios", SITE_URL);
 
-export const metadata: Metadata = {
-  title: PAGE_TITLE,
-  description: DESCRIPTION,
-  alternates: {
-    canonical: "/servicios",
-  },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    type: "website",
-    siteName: SITE_NAME,
-  },
-};
+  return {
+    title: pageTitle,
+    description: metaDescription,
+    alternates,
+    openGraph: {
+      title: metaTitle,
+      description: metaDescription,
+      type: "website",
+      siteName: SITE_NAME,
+    },
+  };
+}
 
 // Orden de presentación específico de /servicios (no altera el orden usado
 // en la Home): Desarrollo Web & Ecommerce primero, Branding en segundo lugar.
@@ -42,21 +44,24 @@ const CATEGORY_ORDER = [
   "formacion",
 ];
 
-const orderedCategories = CATEGORY_ORDER.map(
-  (slug) => serviceCategories.find((category) => category.slug === slug)!
-);
+export default async function ServiciosPage() {
+  const locale = await getLocale();
+  const dict = await getDictionary();
+  const categories = serviceCategoriesByLocale[locale];
+  const orderedCategories = CATEGORY_ORDER.map(
+    (slug) => categories.find((category) => category.slug === slug)!
+  );
 
-export default function ServiciosPage() {
   return (
     <>
       <PageHeader
         title={
           <>
-            Todo lo que tu marca necesita para{" "}
-            <span className="gradient-text">escalar</span>
+            {dict.servicesPage.headerTitlePre}{" "}
+            <span className="gradient-text">{dict.servicesPage.headerTitleHighlight}</span>
           </>
         }
-        description="Desde la identidad de marca hasta la publicidad y la formación de tu equipo: un catálogo pensado para acompañar cada etapa de tu negocio."
+        description={dict.servicesPage.headerDescription}
       />
 
       <div className="mx-auto flex max-w-6xl flex-col gap-16 px-6 pb-10 md:gap-20 md:pb-12">
@@ -81,7 +86,7 @@ export default function ServiciosPage() {
                 (() => {
                   const plan = plans[0];
                   const whatsappHref = buildWhatsAppLink(
-                    `Hola Softiva Studio, quisiera más información sobre el ${plan.title} 🚀`
+                    dict.whatsapp.servicePlanMessage.replace("{plan}", plan.title)
                   );
 
                   return (
@@ -107,14 +112,14 @@ export default function ServiciosPage() {
                                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                               >
                                 <MessageCircle size={16} />
-                                Consultar
+                                {dict.servicesPage.consultar}
                               </a>
                             </div>
                           </div>
 
                           <div className="border-t border-border pt-8 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
                             <h4 className="text-sm font-semibold uppercase tracking-wider text-muted">
-                              ¿Qué incluye este plan?
+                              {dict.servicesPage.whatsIncluded}
                             </h4>
                             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                               {plan.features.map((feature) => (
@@ -144,7 +149,7 @@ export default function ServiciosPage() {
                 >
                   {plans.map((plan, planIndex) => {
                     const whatsappHref = buildWhatsAppLink(
-                      `Hola Softiva Studio, quisiera más información sobre el ${plan.title} 🚀`
+                      dict.whatsapp.servicePlanMessage.replace("{plan}", plan.title)
                     );
 
                     return (
@@ -171,7 +176,7 @@ export default function ServiciosPage() {
                             </p>
 
                             <p className="mt-6 text-sm font-semibold uppercase tracking-wider text-muted">
-                              ¿Qué incluye este plan?
+                              {dict.servicesPage.whatsIncluded}
                             </p>
 
                             <ul className="mt-4 space-y-3">
@@ -198,7 +203,7 @@ export default function ServiciosPage() {
                               className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-accent-blue to-accent-violet px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
                             >
                               <MessageCircle size={16} />
-                              Consultar
+                              {dict.servicesPage.consultar}
                             </a>
                           </div>
                         </div>
@@ -212,7 +217,7 @@ export default function ServiciosPage() {
         )}
       </div>
 
-      <FAQ />
+      <FAQ dict={dict.faq} />
 
       <CTASection />
     </>

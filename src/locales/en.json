@@ -1,0 +1,217 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "servicios": "Services",
+    "portafolio": "Portfolio",
+    "nosotros": "About",
+    "contacto": "Contact",
+    "cotizar": "Get a Quote",
+    "abrirMenu": "Open menu",
+    "cerrarMenu": "Close menu",
+    "seleccionarIdioma": "Select language",
+    "idiomasDisponibles": "Available languages"
+  },
+  "footer": {
+    "tagline": "High-end web development and digital design for brands that want to stand out.",
+    "serviciosTitle": "Services",
+    "navegacionTitle": "Navigation",
+    "contactoTitle": "Contact",
+    "serviceLinks": {
+      "branding": "Branding & Digital Presence",
+      "desarrolloWeb": "Web Development & Ecommerce",
+      "marketing": "Digital Marketing & Ads",
+      "contenido": "Content & Social Media",
+      "formacion": "Training & Coaching"
+    },
+    "rights": "All rights reserved."
+  },
+  "whatsapp": {
+    "floatMessage": "Hi Softiva Studio, I'd like to ask a question.",
+    "ctaMessage": "Hi Softiva Studio, I'd like to start a project 🚀",
+    "servicePlanMessage": "Hi Softiva Studio, I'd like more information about the {plan} plan 🚀",
+    "chatAriaLabel": "Chat on WhatsApp"
+  },
+  "home": {
+    "hero": {
+      "titlePre": "We turn ideas into",
+      "titleHighlight": "digital experiences",
+      "subtitle": "At Softiva Studio we build high-end websites and designs: fast, modern, and built to convert. We take your brand to the next level with cutting-edge technology and design.",
+      "ctaPrimary": "Let's Talk About Your Project",
+      "ctaSecondary": "View Portfolio"
+    },
+    "whyUs": {
+      "eyebrow": "Why choose Softiva Studio",
+      "titlePre": "Results you can",
+      "titleHighlight": "see from day one",
+      "benefits": [
+        {
+          "title": "Blazing Speed",
+          "description": "Optimized sites that load in seconds, improving user experience and your search engine rankings."
+        },
+        {
+          "title": "Exclusive Design",
+          "description": "No generic templates. Every project is custom-designed to reflect your brand's unique identity."
+        },
+        {
+          "title": "Clean Code",
+          "description": "We build with best practices and scalable architecture, designed for your business's future growth."
+        }
+      ]
+    },
+    "servicesSection": {
+      "eyebrow": "Services",
+      "titlePre": "Everything your brand needs to",
+      "titleHighlight": "scale",
+      "verPlanes": "View plans",
+      "verTodos": "View all services"
+    },
+    "portfolioSection": {
+      "eyebrow": "Portfolio",
+      "titlePre": "Projects that",
+      "titleHighlight": "speak for themselves",
+      "verProyecto": "View project",
+      "verCompleto": "View full portfolio"
+    },
+    "ctaSection": {
+      "titlePre": "Ready to take your brand to the",
+      "titleHighlight": "next level",
+      "subtitle": "Tell us your idea and we'll help you turn it into a high-end digital experience.",
+      "cta": "Let's Talk About Your Project"
+    }
+  },
+  "servicesPage": {
+    "pageTitle": "Services",
+    "metaTitle": "Services | Softiva Studio",
+    "metaDescription": "Branding, web development, digital marketing, content, and training: Softiva Studio's complete service catalog.",
+    "headerTitlePre": "Everything your brand needs to",
+    "headerTitleHighlight": "scale",
+    "headerDescription": "From brand identity to advertising and team training: a catalog designed to support every stage of your business.",
+    "whatsIncluded": "What's included in this plan?",
+    "consultar": "Get in touch"
+  },
+  "portfolioPage": {
+    "pageTitle": "Portfolio",
+    "metaTitle": "Portfolio | Softiva Studio",
+    "metaDescription": "Web development, e-commerce, dashboard, and branding projects built by Softiva Studio.",
+    "headerTitlePre": "Projects that",
+    "headerTitleHighlight": "speak for themselves",
+    "headerDescription": "A selection of projects that showcase the style and quality behind every job we take on.",
+    "typeLabels": {
+      "corporate": "Corporate Website",
+      "ecommerce": "Online Store / E-Commerce",
+      "webapp": "Web App / System",
+      "landing": "Landing Page"
+    }
+  },
+  "aboutPage": {
+    "pageTitle": "About",
+    "metaTitle": "About | Softiva Studio",
+    "metaDescription": "Get to know Softiva Studio's philosophy: an agency focused on high-end design, clean code, and measurable results.",
+    "headerTitlePre": "A studio focused on",
+    "headerTitleHighlight": "results, not templates",
+    "headerDescription": "Softiva Studio exists to support brands and businesses that want a high-end digital presence, with no shortcuts or generic solutions.",
+    "philosophyTitle": "Our philosophy",
+    "philosophyText": "We believe a good website is far more than a storefront: it's a business tool. That's why we combine careful design, solid development, and a strategic outlook in every project we take on, so that every line of code and every visual decision serves one goal: growing your brand.",
+    "values": [
+      {
+        "title": "Closeness and transparency",
+        "description": "We work side by side with every client, with clear communication at every stage of the project."
+      },
+      {
+        "title": "Obsessed with detail",
+        "description": "We care about every pixel and every line of code, because that's where the difference between good and excellent lives."
+      },
+      {
+        "title": "Measurable results",
+        "description": "We design and develop with clear business goals: more visits, more conversions, more customers."
+      },
+      {
+        "title": "Constant innovation",
+        "description": "We adopt the best tools and technologies available to keep your brand ahead of the curve."
+      }
+    ],
+    "processEyebrow": "How we work",
+    "processTitle": "A clear process, from start to finish",
+    "process": [
+      {
+        "title": "Discovery",
+        "description": "We listen to your goals, your brand, and your audience to define the ideal scope for the project."
+      },
+      {
+        "title": "Design",
+        "description": "We create the visual structure, prototypes, and custom interface until we reach a clear, modern proposal that represents you."
+      },
+      {
+        "title": "Development",
+        "description": "We turn the design into a real, fast, and robust site, with clean code and best practices."
+      },
+      {
+        "title": "Launch & Support",
+        "description": "We publish the project and keep supporting you with maintenance, improvements, and ongoing support."
+      }
+    ]
+  },
+  "contactPage": {
+    "pageTitle": "Contact",
+    "metaTitle": "Contact | Softiva Studio",
+    "metaDescription": "Tell us about your project and get a custom proposal from Softiva Studio.",
+    "headerTitlePre": "Let's talk about your",
+    "headerTitleHighlight": "next project",
+    "headerDescription": "Fill out the form and we'll get back to you shortly with a custom proposal for your brand or business."
+  },
+  "contactForm": {
+    "title": "Our contact details",
+    "subtitle": "Tell us what you need and we'll get back to you shortly with a custom proposal for your brand or business.",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your full name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@email.com",
+    "serviceLabel": "Service you're interested in",
+    "services": [
+      "Branding & Digital Presence",
+      "Web Development & Ecommerce",
+      "Digital Marketing & Ads (Meta/Google)",
+      "Content & Social Media",
+      "Training & Coaching",
+      "Other"
+    ],
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell us about your project...",
+    "planMessage": "I'd like to get a quote for the \"{plan}\" plan.",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "success": "Message sent successfully! We'll be in touch soon.",
+    "error": "Something went wrong while sending. Please try again."
+  },
+  "faq": {
+    "eyebrow": "Frequently asked questions",
+    "titlePre": "We answer your",
+    "titleHighlight": "top questions",
+    "items": [
+      {
+        "question": "How long does a project take?",
+        "answer": "It depends on complexity: a landing page is usually ready in 1 to 2 weeks, while a corporate site or e-commerce store can take 3 to 6 weeks."
+      },
+      {
+        "question": "What does the design process look like?",
+        "answer": "We start with a discovery stage to understand your brand and goals, follow with a custom visual proposal and prototypes, and once approved, we move into development."
+      },
+      {
+        "question": "Are the sites optimized for mobile?",
+        "answer": "Yes, all our builds are responsive by default: they adapt and work perfectly on phones, tablets, and laptops."
+      },
+      {
+        "question": "Can I request a custom plan that combines Web and Digital Marketing?",
+        "answer": "Yes, we design tailored strategies based on your business stage. You can combine web development with active campaigns on Meta or Google Ads."
+      },
+      {
+        "question": "What do I need to start running Meta or Google Ads campaigns?",
+        "answer": "We just need access to your business accounts (or we can help you create them from scratch). We handle the technical setup of the Pixel, GA4, targeting, and ad design."
+      },
+      {
+        "question": "Does the website include support and maintenance after launch?",
+        "answer": "All our builds include an initial functionality guarantee, SEO optimization, and optional monthly maintenance plans to update content and keep the site secure."
+      }
+    ]
+  }
+}

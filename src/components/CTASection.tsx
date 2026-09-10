@@ -1,10 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { buildWhatsAppLink } from "@/lib/whatsapp";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
-const WHATSAPP_MESSAGE = "Hola Softiva Studio, quiero iniciar un proyecto 🚀";
+export default async function CTASection() {
+  const dict = await getDictionary();
+  const { titlePre, titleHighlight, subtitle, cta } = dict.home.ctaSection;
 
-export default function CTASection() {
   return (
     <section className="relative py-10 md:py-12">
       <div className="mx-auto max-w-4xl px-6">
@@ -14,20 +16,16 @@ export default function CTASection() {
 
             <div className="relative">
               <h2 className="text-3xl font-bold leading-tight tracking-tight text-balance sm:text-4xl">
-                ¿Listo para llevar tu marca al{" "}
-                <span className="gradient-text">siguiente nivel</span>?
+                {titlePre} <span className="gradient-text">{titleHighlight}</span>?
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-muted">
-                Contanos tu idea y te ayudamos a convertirla en una experiencia
-                digital de alto nivel.
-              </p>
+              <p className="mx-auto mt-4 max-w-xl text-muted">{subtitle}</p>
               <a
-                href={buildWhatsAppLink(WHATSAPP_MESSAGE)}
+                href={buildWhatsAppLink(dict.whatsapp.ctaMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-glow group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
               >
-                Hablemos de tu Proyecto
+                {cta}
                 <ArrowRight
                   size={18}
                   className="transition-transform group-hover:translate-x-1"

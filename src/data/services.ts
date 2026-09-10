@@ -6,6 +6,7 @@ import {
   GraduationCap,
   type LucideIcon,
 } from "lucide-react";
+import type { Locale } from "@/lib/i18n";
 
 export type ServicePlan = {
   slug: string;
@@ -24,7 +25,7 @@ export type ServiceCategory = {
   plans: ServicePlan[];
 };
 
-export const serviceCategories: ServiceCategory[] = [
+const es: ServiceCategory[] = [
   {
     slug: "branding",
     icon: Sparkles,
@@ -59,8 +60,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         slug: "creacion-web-tiendas",
         title: "Creación Web & Tiendas Online",
-        summary:
-          "Sitios web y tiendas Ecommerce optimizadas, con hosting incluido.",
+        summary: "Sitios web y tiendas Ecommerce optimizadas, con hosting incluido.",
         badge: "Más elegido",
         features: [
           "Sitios web optimizados y 100% responsive",
@@ -105,8 +105,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         slug: "combo-growth",
         title: "Combo Growth",
-        summary:
-          "Estrategia omnicanal para maximizar conversiones al menor costo posible.",
+        summary: "Estrategia omnicanal para maximizar conversiones al menor costo posible.",
         badge: "Máximo impacto",
         features: [
           "Estrategia omnicanal: Meta Ads + Google Ads + SEO + mejoras visuales",
@@ -128,8 +127,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         slug: "plan-imagenes",
         title: "Plan Imágenes",
-        summary:
-          "12 imágenes mensuales con línea gráfica propia y copywriting incluido.",
+        summary: "12 imágenes mensuales con línea gráfica propia y copywriting incluido.",
         features: [
           "12 imágenes mensuales con línea gráfica personalizada",
           "Planificación de contenido",
@@ -140,8 +138,7 @@ export const serviceCategories: ServiceCategory[] = [
       {
         slug: "plan-reels",
         title: "Plan Reels + Contenido Dinámico",
-        summary:
-          "6 Reels + 6 imágenes mensuales con planificación estratégica.",
+        summary: "6 Reels + 6 imágenes mensuales con planificación estratégica.",
         badge: "Contenido dinámico",
         features: [
           "6 Reels + 6 imágenes mensuales",
@@ -174,3 +171,149 @@ export const serviceCategories: ServiceCategory[] = [
     ],
   },
 ];
+
+const en: ServiceCategory[] = [
+  {
+    slug: "branding",
+    icon: Sparkles,
+    title: "Branding & Digital Presence",
+    summary: "Name, logo, and brand identity to start off on the right foot.",
+    description:
+      "We build your brand's foundations: visual identity, business accounts set up, and your first pieces of content ready to publish.",
+    plans: [
+      {
+        slug: "plan-emprende",
+        title: "Launch Plan",
+        summary: "Your brand is born: a complete visual identity and an initial presence ready to publish.",
+        badge: "Great for getting started",
+        features: [
+          "Name, logo, and brand identity creation",
+          "Business account setup (Facebook, Instagram, Google)",
+          "12 initial posts with a custom visual style",
+          "Ad account portfolio setup",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "desarrollo-web-ecommerce",
+    icon: Globe,
+    title: "Web Development & Ecommerce",
+    summary: "Fast, responsive sites and online stores, ready to sell.",
+    description:
+      "Custom websites and online stores, optimized for conversion and with hosting included.",
+    plans: [
+      {
+        slug: "creacion-web-tiendas",
+        title: "Website & Online Store Creation",
+        summary: "Optimized websites and Ecommerce stores, with hosting included.",
+        badge: "Most popular",
+        features: [
+          "Optimized, 100% responsive websites",
+          "Hosting and domain included for 1 year",
+          "Ecommerce stores with up to 100 products",
+          "Integrated floating WhatsApp button",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "marketing-performance",
+    icon: Target,
+    title: "Digital Marketing & Performance",
+    summary: "Meta Ads, Google Ads campaigns, and omnichannel strategies that convert.",
+    description:
+      "Results-focused paid media: campaigns, technical tracking, and remarketing strategies on Meta and Google to capture and convert more customers.",
+    plans: [
+      {
+        slug: "meta-ads",
+        title: "Complete Meta Ads",
+        summary: "Ad campaigns on Facebook, Instagram, and WhatsApp with full tracking.",
+        features: [
+          "Ad campaigns on Facebook, Instagram, and WhatsApp",
+          "Unified message management",
+          "Full technical setup (GA4, Pixel, GTM, events)",
+          "Remarketing and prospecting strategies",
+        ],
+      },
+      {
+        slug: "google-ads",
+        title: "Complete Google Ads",
+        summary: "Positioning on Google Shopping, Search, and Display focused on conversion.",
+        features: [
+          "Positioning on Google Shopping, Search, and Display",
+          "Ongoing conversion optimization",
+          "Visibility and technical SEO improvements",
+        ],
+      },
+      {
+        slug: "combo-growth",
+        title: "Growth Combo",
+        summary: "An omnichannel strategy to maximize conversions at the lowest possible cost.",
+        badge: "Maximum impact",
+        features: [
+          "Omnichannel strategy: Meta Ads + Google Ads + SEO + visual improvements",
+          "Cyclical traffic and cross-remarketing",
+          "Unified client management",
+          "Focus on maximizing conversions at the lowest cost",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "contenido-redes",
+    icon: ImageIcon,
+    title: "Content & Social Media Management",
+    summary: "Content planned month by month to keep your social media always active.",
+    description:
+      "We plan, write, and design your social media content, with your own visual style and topics tailored to your business.",
+    plans: [
+      {
+        slug: "plan-imagenes",
+        title: "Images Plan",
+        summary: "12 monthly images with your own visual style and copywriting included.",
+        features: [
+          "12 monthly images with a custom visual style",
+          "Content planning",
+          "Copywriting per post",
+          "12 topics tailored to your business",
+        ],
+      },
+      {
+        slug: "plan-reels",
+        title: "Reels + Dynamic Content Plan",
+        summary: "6 Reels + 6 monthly images with strategic planning.",
+        badge: "Dynamic content",
+        features: [
+          "6 Reels + 6 monthly images",
+          "Strategic content planning",
+          "Copywriting",
+          "Topics tailored to your brand",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "formacion",
+    icon: GraduationCap,
+    title: "Training & Coaching",
+    summary: "Digital marketing courses by level, from fundamentals to advanced strategy.",
+    description:
+      "Hands-on training so your team (or you) can manage and grow your business's digital presence.",
+    plans: [
+      {
+        slug: "cursos-marketing-digital",
+        title: "Digital Marketing Courses",
+        summary: "Level-based training, from the fundamentals to advanced analytics.",
+        features: [
+          "Level 1: Digital marketing fundamentals",
+          "Level 2: SEO and Google Ads",
+          "Level 3: Meta Ads and Social Media",
+          "Level 4: Advanced strategies and analytics",
+        ],
+      },
+    ],
+  },
+];
+
+export const serviceCategoriesByLocale: Record<Locale, ServiceCategory[]> = { es, en };
