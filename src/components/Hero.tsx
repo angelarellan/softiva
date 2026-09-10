@@ -36,17 +36,17 @@ export default async function Hero() {
               href={buildWhatsAppLink(dict.whatsapp.ctaMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-glow group inline-flex w-full max-w-72 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 py-3.5 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
+              className="btn-glow group inline-flex h-14 w-full max-w-72 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-accent-blue to-accent-violet px-8 text-base font-semibold text-white shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-lg"
             >
               {ctaPrimary}
               <ArrowRight
                 size={18}
-                className="transition-transform group-hover:translate-x-1"
+                className="shrink-0 transition-transform group-hover:translate-x-1"
               />
             </a>
             <Link
               href={localeHref(locale, "/portafolio")}
-              className="inline-flex w-full max-w-72 items-center justify-center gap-2 rounded-full border border-border bg-surface/80 px-8 py-3.5 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-accent-violet/60 hover:bg-surface-2"
+              className="inline-flex h-14 w-full max-w-72 items-center justify-center gap-2 whitespace-nowrap rounded-full border border-border bg-surface/80 px-8 text-base font-semibold text-foreground shadow-sm backdrop-blur transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-accent-violet/60 hover:bg-surface-2"
             >
               {ctaSecondary}
             </Link>
