@@ -7,7 +7,6 @@ import { localeHref } from "@/lib/i18n";
 import FooterMarquee from "@/components/FooterMarquee";
 import ScrollTopLink from "@/components/ScrollTopLink";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import CookiePreferencesLink from "@/components/CookiePreferencesLink";
 import { getDictionary, getLocale } from "@/app/[lang]/dictionaries";
 
 const SOCIALS = [
@@ -148,14 +147,10 @@ export default async function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center gap-3 border-t border-background/10 pt-8 text-center sm:flex-row sm:justify-between">
+        <div className="mt-14 border-t border-background/10 pt-8 text-center">
           <p className="text-sm text-background/60">
             © {new Date().getFullYear()} Softiva Studio. {dict.footer.rights}
           </p>
-          <CookiePreferencesLink
-            label={dict.cookieBanner.preferencesLink}
-            className="text-sm text-background/60 underline-offset-4 transition-colors hover:text-background hover:underline"
-          />
         </div>
       </div>
     </footer>
