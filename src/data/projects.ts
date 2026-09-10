@@ -3,6 +3,9 @@ export type Project = {
   title: string;
   category: string;
   image: string;
+  // Opcional: si no se define, las tarjetas usan `title` como alt (mismo
+  // comportamiento que ya tenían todos los proyectos).
+  alt?: string;
   description: string;
   tags: string[];
 };
@@ -22,8 +25,8 @@ export const projects: Project[] = [
     slug: "vertice-studio",
     title: "Vértice Studio",
     category: "Landing Page · Branding",
-    image:
-      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1200&q=80",
+    image: "/vertice-studio.webp",
+    alt: "Vértice Studio - Diseño y desarrollo de Landing Page",
     description:
       "Landing page e identidad visual completa para un estudio creativo, con animaciones sutiles que refuerzan su propuesta de valor.",
     tags: ["Branding", "Landing Page", "Next.js"],

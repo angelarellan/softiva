@@ -28,7 +28,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 const TITLE = "Softiva Studio | Desarrollo Web & Diseño Digital";
 const DESCRIPTION =
-  "Agencia especializada en desarrollo web de alto rendimiento, e-commerce, branding y marketing digital. Transformamos visitas en clientes.";
+  "Softiva Studio - Agencia de desarrollo web, e-commerce y software a medida. Transformamos ideas en experiencias digitales de alto nivel.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

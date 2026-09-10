@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 import { CheckCircle2, Loader2, Mail, Send } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/SocialIcons";
@@ -22,14 +22,15 @@ type Status = "idle" | "loading" | "success" | "error";
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>("idle");
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
+  // Lazy initializer en vez de useEffect: la página es SSG (esta parte se
+  // sigue prerenderizando en build time aunque el componente sea "use
+  // client"), así que se guarda contra `window` indefinido durante ese
+  // paso -- en el cliente ya corre normalmente con el ?plan= real de la URL.
+  const [message, setMessage] = useState(() => {
+    if (typeof window === "undefined") return "";
     const plan = new URLSearchParams(window.location.search).get("plan");
-    if (plan) {
-      setMessage(`Quiero cotizar el plan "${plan}".`);
-    }
-  }, []);
+    return plan ? `Quiero cotizar el plan "${plan}".` : "";
+  });
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();

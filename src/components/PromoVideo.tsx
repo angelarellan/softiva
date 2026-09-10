@@ -10,7 +10,12 @@ const CONTROL_BUTTON_CLASS =
 export default function PromoVideo() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [shouldLoad, setShouldLoad] = useState(false);
+  // El fallback para navegadores sin IntersectionObserver se resuelve en
+  // el lazy initializer (se ejecuta durante el render) en vez de con un
+  // setState dentro del efecto de abajo.
+  const [shouldLoad, setShouldLoad] = useState(
+    () => typeof IntersectionObserver === "undefined"
+  );
   const [muted, setMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -20,13 +25,9 @@ export default function PromoVideo() {
   // que reproducir hasta que el IntersectionObserver lo habilite. Esto
   // evita que el video pese en el LCP/FCP de la carga inicial.
   useEffect(() => {
+    if (shouldLoad) return;
     const node = containerRef.current;
     if (!node) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setShouldLoad(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -40,7 +41,7 @@ export default function PromoVideo() {
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [shouldLoad]);
 
   useEffect(() => {
     if (!shouldLoad) return;
@@ -137,7 +138,7 @@ export default function PromoVideo() {
                 isFullscreen ? "object-contain" : "object-cover"
               }`}
               poster="/promo-poster.webp"
-              {...({ fetchpriority: "high" } as React.VideoHTMLAttributes<HTMLVideoElement>)}
+              {...({ fetchPriority: "high" } as React.VideoHTMLAttributes<HTMLVideoElement>)}
               autoPlay
               loop
               muted={muted}
