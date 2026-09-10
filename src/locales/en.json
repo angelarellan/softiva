@@ -1,4 +1,11 @@
 {
+  "cookieBanner": {
+    "title": "This website uses cookies",
+    "description": "We use cookies to enhance your experience. By accepting, you'll enjoy smoother interactions.",
+    "accept": "Accept Cookies 🍪",
+    "close": "Dismiss cookie notice",
+    "preferencesLink": "Cookie preferences"
+  },
   "nav": {
     "inicio": "Home",
     "servicios": "Services",

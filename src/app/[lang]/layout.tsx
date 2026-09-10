@@ -6,6 +6,7 @@ import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import CookieBanner from "@/components/CookieBanner";
 import MetaPixelPageview from "@/components/MetaPixelPageview";
 import OrganizationSchema from "@/components/OrganizationSchema";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
@@ -121,11 +122,40 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
         className="min-h-full flex flex-col bg-background text-foreground"
         style={{ backgroundColor: "#f7f8fb" }}
       >
+        {IS_PRODUCTION && (
+          // Google Consent Mode v2: por defecto se deniega el storage de
+          // analytics/ads hasta que CookieBanner llame a
+          // gtag('consent','update', ...). beforeInteractive garantiza que
+          // esto se descargue y ejecute antes que el script de GA4 de más
+          // abajo (que usa la estrategia default, afterInteractive) --
+          // el orden entre las dos importa para que gtag.js procese el
+          // "default" antes que el "config". No reemplaza ni modifica el
+          // bootstrap de GA4/Meta Pixel que ya existe, solo se agrega antes.
+          <Script id="consent-default" strategy="beforeInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                analytics_storage: 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
+            `}
+          </Script>
+        )}
         <OrganizationSchema />
         <Navbar locale={locale} dict={dict.nav} whatsappMessage={dict.whatsapp.ctaMessage} />
         <main className="flex-1">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <CookieBanner
+          title={dict.cookieBanner.title}
+          description={dict.cookieBanner.description}
+          acceptLabel={dict.cookieBanner.accept}
+          closeLabel={dict.cookieBanner.close}
+        />
         {IS_PRODUCTION && (
           <>
             {/*
@@ -144,6 +174,7 @@ export default async function RootLayout({ children }: LayoutProps<"/[lang]">) {
                 t.src=v;s=b.getElementsByTagName(e)[0];
                 s.parentNode.insertBefore(t,s)}(window, document,'script',
                 'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('consent', 'revoke');
                 fbq('init', '${META_PIXEL_ID}');
                 fbq('track', 'PageView');
               `}
